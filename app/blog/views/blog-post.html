@@ -1,0 +1,118 @@
+<div id="content" data-sparkline-container data-easy-pie-chart-container>
+ 
+    <!-- row -->
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="well padding-10">
+                <h5 class="margin-top-0"><i class="fa fa-search"></i> {{getWord("Blog Image")}}</h5>
+                <img ng-src="{{blog.image}}" class="img-responsive" alt="styles/custom">
+                <div class="padding-10"></div>
+                <ul class="list-inline font-xs">
+                    <li>
+                        <a ng-click="setShowImages(true)" ng-class="showImages === true? 'text-muted' : 'text-primary'">{{getWord("Show Images")}}</a>
+                    </li>
+                    <li>
+                        <a ng-click="setShowImages(false)" ng-class="showImages === true? 'text-primary': 'text-muted'">{{getWord("Hide Images")}}</a>
+                    </li>
+                </ul>
+                <div ng-show="showImages" id="myCarousel-1" class="carousel slide" data-smart-ride-carousel>
+                    <ol class="carousel-indicators">
+                        <li ng-repeat="img in images" data-target="#myCarousel-2" data-slide-to="{{$index}}" ng-class="$index === 0? 'active' : null"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <!-- Slide -->
+                        <div ng-repeat="img in images" ng-class="$index === 0? 'item active' : 'item'">
+                            <img ng-src="styles/custom/blogs/{{img.name}}" alt="">
+                            <div class="carousel-caption caption-right">
+                                <a href-void class="btn btn-info btn-sm" ng-click="selectImage('styles/custom/blogs/' + img.name)">{{getWord("Select Image")}}</a>
+                                <br />
+                                <br />
+                                <br />
+                            </div>
+                        </div>
+                    </div>
+                    <a class="left carousel-control" href="#myCarousel-1" ng-non-bindable data-slide="prev"> <span class="glyphicon glyphicon-chevron-left"></span> </a>
+                    <a class="right carousel-control" href="#myCarousel-1" ng-non-bindable data-slide="next"> <span class="glyphicon glyphicon-chevron-right"></span> </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-9">
+            <div class="well">
+                <form name="blogForm" ng-submit="Save(1)">
+                    <table class="table table-striped table-forum">
+                        <thead>
+                            <tr>
+                                <th ng-if="groupClass" colspan="2">
+                                    <a ui-sref="app.blog"> {{getWord("Blog")}} </a> &gt; {{getWord("Edit")}}
+                                </th>
+                                <th ng-if="!groupClass" colspan="2">
+                                    {{getWord("Edit")}}
+                                </th>
+                            </tr>
+                        </thead>
+                        <!-- Post -->
+                        <tbody>
+                            <tr>
+                                <td class="text-center">
+                                    <strong>{{getWord("Title")}}</strong>
+                                </td>
+                                <td>
+                                    <div class="col-sm-12">
+                                        <input type="text" class="form-control" ng-required="true" ng-model="blog.name">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-center">
+                                    <strong>{{getWord("Abstract")}}</strong>
+                                </td>
+                                <td>
+                                    <div class="col-sm-12">
+                                        <textarea type="text" class="form-control" rows="4" required ng-model="blog.abstract"></textarea>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-center">
+                                    <strong>{{getWord("Blog Categories")}}</strong>
+                                </td>
+                                <td>
+                                    <div class="col-sm-12">
+                                        <select class="form-control" name="categories"
+                                                ng-model="blog.toGroup"
+                                                ng-options="group.ID as group.Name for group in groupList" required>
+                                            <option value="">{{getWord("Select Category")}}</option> 
+                                        </select>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-center" style="width: 8%;">
+                                    <div class="push-bit">
+                                        {{getWord("Content")}}
+                                    </div>
+                                </td>
+                                <td>
+                                    <summernote id="newPost" config="options" ng-model="blog.content"></summernote>
+
+                                    <div class="padding-5 pull-right">
+                                        <button class="btn btn-primary" type="submit">
+                                            {{getWord('Post')}}
+                                        </button>
+                                        <!--
+                                        <button class="btn btn-success" type="submit" ng-click="Save(0)">
+                                            {{getWord('Save')}}
+                                        </button>
+                                        -->
+                                    </div> 
+                                </td>
+                            </tr>
+                            <!-- end Post -->
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- end row -->
+</div>

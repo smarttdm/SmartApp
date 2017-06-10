@@ -1,0 +1,39 @@
+﻿
+
+<div id="content">
+    <!-- widget grid -->
+    <section widget-grid id="widget-grid">
+        <div class="row">
+            <article class="col-sm-12 col-md-12 col-lg-12">
+                <div jarvis-widget id="wid-id-1" data-widget-editbutton="false" data-widget-custombutton="false">
+                    <header>
+                        <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+                        <h2>{{caption}}</h2>
+                        <div class="widget-toolbar">
+                            <span class="jarviswidget-ctrls" ng-click="$dismiss()"> <i class="fa fa-close"></i> </span>
+                        </div>
+                    </header>
+                    <div>
+                        <!-- widget content -->
+                        <div class="widget-body no-padding">
+                            <div id="gridContainer" style="margin: 0 auto" dx-data-grid="dataGridSettings">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="padding-10">
+                        <footer>
+                            <div class="form-actions">
+                                <button type="button" class="btn btn-primary" , ng-click="saveSelection()" button-spinner="loading" ng-disabled="loading">
+                                    {{getWord('Save')}}
+                                </button>
+                                <button type="button" class="btn btn-default" ng-click="goBack()">
+                                    {{getWord('Cancel')}}
+                                </button>
+                            </div>
+                        </footer>
+                    </div>
+                  </div>
+            </article>
+        </div>
+    </section>
+</div>

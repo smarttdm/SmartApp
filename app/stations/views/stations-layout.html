@@ -1,0 +1,47 @@
+﻿<!-- MAIN CONTENT -->
+<div id="content">
+
+    <div class="row">
+        <big-breadcrumbs items="[getWord('Home'), getWord('TestStations')]" class="col-xs-12 col-sm-12"></big-breadcrumbs>
+    </div>
+    <!-- widget grid -->
+    <section id="widget-grid" widget-grid>
+        <!-- row -->
+        <div class="row">
+            <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                <!-- new widget -->
+                <div class="jarviswidget" id="StationsLayoutCtrl" data-widget-deletebutton="true">
+                    <header>
+                        <h2>{{getWord("StationTree")}}</h2>
+                    </header>
+
+                    <!-- widget div-->
+                    <div>
+
+                        <div id="stationTree" class="widget-body">
+                            <!-- content goes here -->
+                            <div class="tree smart-form">
+                                <ul data-smart-treeview data-items="stationTree" role="tree"></ul>
+                            </div>
+                            <!-- end content -->
+                        </div>
+
+                    </div>
+                    <!-- end widget div -->
+                </div>
+                <!-- end widget -->
+            </div>
+
+            <article class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
+ 
+                <!-- dashboard view div-->
+                <div id="dashboard" data-ui-view="dashboard" class="widget-body">
+                    <!-- content goes here -->
+                    <!-- end content -->
+                </div>
+                <!-- end dashboard view div -->
+
+            </article>
+        </div>
+    </section>
+</div>

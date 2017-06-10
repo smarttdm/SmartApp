@@ -1,0 +1,132 @@
+﻿<div jarvis-widget id="live-feeds-widget" data-widget-togglebutton="false" data-widget-editbutton="false"
+     data-widget-fullscreenbutton="false" data-widget-colorbutton="false" data-widget-deletebutton="false">
+    <header>
+        <span class="widget-icon"> <i class="glyphicon glyphicon-stats txt-color-darken"></i> </span>
+
+        <h2>{{project}}=>{{model}}</h2>
+
+        <ul class="nav nav-tabs pull-right in" id="myTab">
+            <li class="active">
+                <a data-toggle="tab" href="#s1"><i class="fa fa-clock-o"></i> <span class="hidden-mobile hidden-tablet">{{getWord("Single Record")}}</span></a>
+            </li>
+
+            <li>
+                <a data-toggle="tab" href="#s2"><i class="fa fa-cog"></i> <span class="hidden-mobile hidden-tablet">{{getWord("Batch Records")}}</span></a>
+            </li>
+        </ul>
+
+    </header>
+
+    <!-- widget div-->
+    <div class="no-padding">
+
+        <div class="widget-body">
+            <!-- content -->
+            <div id="myTabContent" class="tab-content">
+                <div class="tab-pane fade active in padding-10 no-padding-bottom" id="s1">
+                    <!-- widget grid -->
+                    <section id="widget-grid" class="">
+
+                        <!-- START ROW -->
+                        <div class="row">
+
+                            <!-- NEW COL START -->
+                            <article class="col-sm-12 col-md-12 col-lg-12">
+
+                                <!-- Widget ID (each widget will need unique ID)-->
+                                <div class="jarviswidget" id="wid-id-0" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-custombutton="false">
+                                                <!-- widget options:
+                                    usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+                                    data-widget-colorbutton="false"
+                                    data-widget-editbutton="false"
+                                    data-widget-togglebutton="false"
+                                    data-widget-deletebutton="false"
+                                    data-widget-fullscreenbutton="false"
+                                    data-widget-custombutton="false"
+                                    data-widget-collapsed="true"
+                                    data-widget-sortable="false"
+
+                                    -->
+                                    <header>
+                                        <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+                                        <h2>{{getWord("ML Model Form")}}</h2>
+
+                                    </header>
+
+                                    <!-- widget div-->
+                                    <div>
+                                        <!-- widget content -->
+                                        <div class="widget-body no-padding">
+
+                                            <form class="smart-form" ng-submit="submitModelForm()">
+                                                <header>
+                                                    {{getWord("ML Model Inputs")}}
+                                                </header>
+
+                                                <fieldset>
+                                                    <div class="row">
+                                                        <section class="col col-3" ng-repeat="inputField in inputFields">
+                                                            <label class="label">{{inputField.Label}}</label>
+                                                            <label class="input">
+                                                                <input type="text" id="{{inputField.Label}}" required ng-model="inputField.Value">
+                                                            </label>
+                                                        </section>
+                                                    </div>
+                                                </fieldset>
+
+                                                <header>
+                                                    {{getWord("ML Model Outputs")}}
+                                                </header>
+
+                                                <fieldset>
+                                                    <div class="row">
+                                                        <section class="col col-3" ng-repeat="outputField in outputFields">
+                                                            <label class="label">{{outputField.Label}}</label>
+                                                            <label class="input">
+                                                                <input type="text" id="{{outputField.Label}}" disabled="disabled" ng-model="outputField.Value">
+                                                            </label>
+                                                        </section>
+                                                    </div>
+
+                                                </fieldset>
+
+                                                <footer>
+                                                    <button type="submit" class="btn btn-primary" button-spinner="loading">
+                                                        {{getWord("Evaluate")}}
+                                                    </button>
+                                                </footer>
+                                            </form>
+
+                                        </div>
+                                        <!-- end widget content -->
+
+                                    </div>
+                                    <!-- end widget div -->
+
+                                </div>
+                                <!-- end widget -->
+
+                            </article>
+                            <!-- END COL -->
+
+                        </div>
+
+                        <!-- END ROW -->
+                    </section>
+                    <!-- end widget grid -->
+                </div>
+                <!-- end s1 tab pane -->
+
+                <div class="tab-pane fade" id="s2">
+                    <div class="padding-10">
+                   
+                    </div>
+                </div>
+                <!-- end s2 tab pane -->
+            </div>
+            <!-- end content -->
+        </div>
+    </div>
+    <!-- end widget div -->
+</div>

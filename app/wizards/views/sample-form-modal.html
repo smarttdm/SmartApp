@@ -1,0 +1,50 @@
+﻿
+
+<div id="content">
+    <style>
+        .datepicker {
+            z-index: 1151 !important;
+        }
+         .modal { overflow: scroll;}
+    </style>
+    <!-- widget grid -->
+    <section widget-grid id="widget-grid">
+        <div class="row">
+            <article class="col-sm-12 col-md-12 col-lg-12">
+                <div jarvis-widget id="wid-id-1" data-widget-editbutton="false" data-widget-custombutton="false">
+                    <header>
+                        <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+                        <h2>{{caption}}</h2>
+                        <div class="widget-toolbar">
+                            <span class="jarviswidget-ctrls" ng-click="$dismiss()"> <i class="fa fa-close"></i> </span>
+                        </div>
+                    </header>
+                    <div>
+                        <!-- widget content -->
+                        <div>
+                            <div class="widget-body">
+                                <form id="ebaasform" name="ebaasform"  novalidate ng-submit="submitSampleForm()">
+                                    <div data-ng-hide="message == ''" ng-class="getFormCssClasses(ebaasform)">
+                                        {{message}}
+                                    </div>
+                                    <ebaas-form-template dbschema="dbschema" dbclass="dbclass" oid="oid" template="template" formattribute="formAttribute"></ebaas-form-template>
+                                    <div data-ng-hide="message == ''" ng-class="getFormCssClasses(ebaasform)">
+                                        {{message}}
+                                    </div>
+                                    <div class="form-actions">
+                                        <button type="submit" class="btn btn-primary" button-spinner="loading" ng-disabled="!canSave() || loading">
+                                            {{getWord('Submit')}}
+                                        </button>
+                                        <button type="button" class="btn btn-default" ng-click="goBack()">
+                                            {{getWord('Cancel')}}
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+               </div>
+            </article>
+        </div>
+    </section>
+</div>

@@ -1,0 +1,30 @@
+﻿
+
+
+<div class="jarviswidget jarviswidget-color-blueDark" data-widget-editbutton="false" data-widget-fullscreenbutton="false" data-widget-togglebutton="false" data-widget-colorbutton="false" data-widget-deletebutton="false">
+    <header>
+        <h2> {{getWord('addedSamples')}} </h2>
+    </header>
+
+    <!-- widget div-->
+    <div>
+        <div class="widget-body">
+            <!-- content goes here -->
+            <div id="gridContainer" style="margin: 0 auto" dx-data-grid="dataGridSettings">
+                <div data-options="{dxTemplate: {name: 'cellTemplate'}}">
+                    <button class="btn btn-primary btn-xs" ng-click="$parent.editItem(value, data)"><i class="fa fa-edit"></i></button>
+                    <button class="btn btn-danger btn-xs" ng-click="$parent.removeItem(value, rowIndex)"><i class="fa fa-remove"></i></button>
+                </div>
+             </div>
+            <!-- end content -->
+        </div>
+    </div>
+    <div class="padding-10">
+        <footer>
+            <a class="btn btn-sm btn-success" ui-sref=".sampletree">
+                <i class="fa fa-fw fa-plus"></i>{{getWord('AddSample')}}
+            </a>
+        </footer>
+    </div>
+        <!-- end widget div -->
+</div>

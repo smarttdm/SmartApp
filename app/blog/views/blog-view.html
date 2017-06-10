@@ -1,0 +1,128 @@
+<div id="content" data-sparkline-container data-easy-pie-chart-container>
+<div class="row">
+    <div class="col-sm-9">
+        <div class="well well-sm">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div ng-if="groupClass" class="padding-5">
+                        <h3><a ui-sref="app.blog"> {{getWord("Blog")}} </a> &gt; {{blog.name}}</h3>
+                    </div>
+                    <div ng-if="!groupClass" class="padding-5">
+                        <h3>{{blog.name}}</h3>
+                    </div>
+                    <div class="well well-light well-sm no-margin no-padding">
+                        <div class="row">
+                            <div class="col-sm-12 col-lg-12">
+                                <div id="myCarousel" class="carousel fade profile-carousel">
+                                    <div class="air air-top-left padding-10">
+                                        <h4 class="txt-color-white font-md">{{blog.postTime}}</h4>
+                                    </div>
+                                    <ol class="carousel-indicators">
+                                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                                        <li data-target="#myCarousel" data-slide-to="1" class></li>
+                                        <li data-target="#myCarousel" data-slide-to="2" class></li>
+                                    </ol>
+                                    <div class="carousel-inner">
+                                        <!-- Slide 1 -->
+                                        <div class="item active">
+                                            <img src="styles/img/demo/s1.jpg" alt="demo user">
+                                        </div>
+                                        <!-- Slide 2 -->
+                                        <div class="item">
+                                            <img src="styles/img/demo/s2.jpg" alt="demo user">
+                                        </div>
+                                        <!-- Slide 3 -->
+                                        <div class="item">
+                                            <img src="styles/img/demo/m3.jpg" alt="demo user">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3 profile-pic">
+                                <img ng-src="{{getPosterImage(blog.poster)}}" alt="poster">
+                                <h4 class="font-sm">
+                                    <strong>{{blog.posterName}}</strong>
+                                </h4>
+                            </div>
+                            <div class="col-sm-12 col-lg-12">
+                                <hr>
+                                <div class="padding-10">
+                                    <div ng-bind-html="blog.content" ng-model="blog.content"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end row -->
+                    </div>
+                    <div class="chat-body no-padding profile-message">
+                        <ul class="list-inline font-xs">
+                            <li>
+                                <a ng-click="setHideComments(false)" ng-class="hideComments === false? 'text-muted' : 'text-primary'">{{getWord("Show All Comments")}} ({{blog.commentQty}})</a>
+                            </li>
+                            <li>
+                                <a ng-click="setHideComments(true)" ng-class="hideComments === false? 'text-primary': 'text-muted'">{{getWord("Hide Comments")}}</a>
+                            </li>
+                        </ul>
+                        <ul ng-hide="hideComments">
+                            <li ng-if="!blog.comments.length">
+                                {{getWord("No comments")}}
+                            </li>
+                            <li class="message message-reply" ng-repeat="comment in blog.comments">
+                                <img ng-src="{{getPosterImage(comment.poster)}}" class="online" alt="user">
+                                <span class="message-text">
+                                    <a href-void class="username">{{comment.posterName}}</a> {{comment.content}}</i>
+                                </span>
+                                <ul class="list-inline font-xs">
+                                    <li>
+                                        <a href-void class="text-muted">{{comment.postTime}} </a>
+                                    </li>
+                                    <li>
+                                        <a href-void class="text-danger"><i class="fa fa-thumbs-up"></i> Like</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <div class="input-group wall-comment-reply">
+                                    <input id="commentInput" type="text" class="form-control" ng-model="comment" placeholder="{{getWord('Your comment')}}">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-primary" id="btn-chat" ng-click="submitComment()">
+                                            <i class="fa fa-reply"></i> {{getWord("Submit")}}
+                                        </button>
+                                    </span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="well padding-10">
+            <h5 class="margin-top-0"><i class="fa fa-search"></i> {{getWord("Search Blogs")}}</h5>
+            <form name="searchform" ng-submit="searchBlogs()">
+                <div class="input-group">
+                    <input type="text" class="form-control" ng-model="keywords">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button" ng-click="searchBlogs()">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </span>
+                </div>
+            </form>
+            <!-- /input-group -->
+        </div>
+        <div class="well padding-10">
+            <h5 class="margin-top-0"><i class="fa fa-fire"></i> {{getWord("Popular Blogs")}}:</h5>
+            <ul class="no-padding list-unstyled">
+                <li class="padding-5" ng-repeat="blog in popularblogs">
+                    <a ui-sref="app.blog.view({schema: dbschema, blogclass: blogClass, oid: blog.obj_id})" class="margin-top-0">{{blog.name}}</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /well -->
+    </div>
+</div>
+<!-- end row -->
+</div>

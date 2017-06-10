@@ -1,0 +1,31 @@
+﻿<div id="content" >
+    <div class="row">
+        <big-breadcrumbs items="[getWord('Home'), getWord('View Post')]"
+                         class="col-xs-12 col-sm-12"></big-breadcrumbs>
+    </div>
+    <!-- row -->
+    <div class="row">
+        <div class="col-md-9">
+            <div class="text-center">
+                <h3 >{{post.Caption}}</h3>
+                <h4 class="font-sm">
+                    <strong>{{post.CreateDate}}</strong>
+                </h4>
+            </div>
+            <div class="well">
+                <div>
+                    <div ng-bind-html="post.Content" ng-model="post.Content"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 hidden-xs hidden-sm">
+            <div style="height:80px">
+                &nbsp;
+            </div>
+            <div>
+                <img ng-src="{{post.Image}}" class="img-responsive" alt="styles/custom">
+            </div>
+        </div>
+    </div>
+    <!-- end row -->
+</div>

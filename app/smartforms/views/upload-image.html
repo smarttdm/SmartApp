@@ -1,0 +1,80 @@
+﻿
+
+<div id="content">
+    <style>
+         .cropArea {
+            background: #E4E4E4;
+            overflow: hidden;
+            width:600px;
+            height:400px;
+        }
+        form .progress {
+            line-height: 15px;
+        }
+        .progress {
+            display: inline-block;
+            width: 100px;
+            border: 3px groove #CCC;
+        }
+        .progress div {
+            font-size: smaller;
+            background: orange;
+            width: 0;
+        }
+    </style>
+    <!-- widget grid -->
+    <section widget-grid id="widget-grid">
+        <div class="row">
+            <article class="col-sm-12 col-md-12 col-lg-12">
+                <div jarvis-widget id="wid-id-1" data-widget-editbutton="false" data-widget-custombutton="false">
+                    <header>
+                        <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+                        <h2>{{getWord('Change Image')}}</h2>
+                        <div class="widget-toolbar">
+                            <span class="jarviswidget-ctrls" ng-click="$dismiss()"> <i class="fa fa-close"></i> </span>
+                        </div>
+                    </header>
+                    <div>
+                        <!-- widget content -->
+                        <form name="uploadForm">
+                            <table class="table table-bordered">
+                                <tbody>
+                                    <tr>
+                                        <td align="center">
+                                            <div class="form-group">
+                                                <label class="control-label"><strong>{{getWord("Select File")}}</strong></label>
+                                                <div>
+                                                    <input class="form-control" type="file" ngf-select="selectFile()" ng-model="picFile" name="file"
+                                                           accept=".jpg, .jpeg, .gif, .png, .bmp, .tif"
+                                                           ngf-max-size="10MB" required
+                                                           ngf-model-invalid="errorFile">
+                                                    <i class="text-danger" ng-show="uploadForm.file.$error.maxSize">
+                                                        File too large {{errorFile.size / 1000000|number:1}}MB: max 10M
+                                                    </i>
+
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="padding-10">
+                                                    <span class="progress" ng-show="picFile.progress >= 0">
+                                                        <div style="width:{{picFile.progress}}%"
+                                                             ng-bind="picFile.progress + '%'"></div>
+                                                    </span>
+                                                    <span ng-show="picFile.result">{{getWord("Image Uploaded")}}</span>
+                                                    <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+                                                </div>
+                                                <button class="btn btn-primary" ng-click="uploadFile(picFile)" button-spinner="loading" ng-disabled="!uploadForm.$valid || loading">{{getWord("Submit")}}</button>
+                                                <button class="btn btn-default" ng-click="closeModal()">{{getWord("Cancel")}}</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </form>
+                    </div>
+               </div>
+            </article>
+        </div>
+    </section>
+</div>

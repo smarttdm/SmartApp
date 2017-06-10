@@ -1,0 +1,84 @@
+﻿<!-- MAIN CONTENT -->
+<div id="content">
+
+    <div class="row">
+        <big-breadcrumbs items="[getWord('Home'), getWord('Profile')]"
+                         class="col-xs-12 col-sm-12"></big-breadcrumbs>
+    </div>
+    <!-- widget grid -->
+    <section widget-grid id="widget-grid">
+        <div class="row">
+            <article class="col-sm-12">
+                <div jarvis-widget id="normal-table-widget" data-widget-color="blueDark" data-widget-editbutton="false">
+                    <header>
+                        <span class="widget-icon"> <i class="fa fa-user"></i> </span>
+                        <h2>{{getWord('Profile')}}</h2>
+                    </header>
+                    <div class="row">
+                        <div class="hidden-xs hidden-sm col-md-3 col-lg-3">
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            <div class="well no-padding">
+
+                                <form id="smart-form-register" class="smart-form client-form">
+                                    <fieldset>
+                                        <section>
+                                            <label class="input">
+                                                <i class="icon-append fa fa-user"></i>
+                                                <input type="text" name="username" disabled placeholder="{{getWord('UserName')}}" data-ng-model="profile.userName" required autofocus>
+                                                <b class="tooltip tooltip-bottom-right">{{getWord('UserNameTip')}}</b>
+                                            </label>
+                                        </section>
+
+                                        <section>
+                                            <label class="input">
+                                                <i class="icon-append fa fa-envelope"></i>
+                                                <input type="email" name="email" placeholder="{{getWord('Email')}}" data-ng-model="profile.email" required>
+                                                <b class="tooltip tooltip-bottom-right">{{getWord('EmailTip')}}</b>
+                                            </label>
+                                        </section>
+
+                                        <section>
+                                            <label class="input">
+                                                <i class="icon-append fa fa-phone"></i>
+                                                <input type="text" name="email" placeholder="{{getWord('PhoneNumber')}}" data-ng-model="profile.phoneNumber">
+                                                <b class="tooltip tooltip-bottom-right">{{getWord('PhoneNumberTip')}}</b>
+                                            </label>
+                                        </section>
+                                    </fieldset>
+
+                                    <fieldset>
+                                        <div class="row">
+                                            <section class="col col-6">
+                                                <label class="input">
+                                                    <input type="text" name="firstname" placeholder="{{getWord('FirstName')}}" data-ng-model="profile.firstName">
+                                                </label>
+                                            </section>
+                                            <section class="col col-6">
+                                                <label class="input">
+                                                    <input type="text" name="lastname" placeholder="{{getWord('LastName')}}" data-ng-model="profile.lastName" required>
+                                                </label>
+                                            </section>
+                                        </div>
+                                    </fieldset>
+                                    <footer>
+                                        <button type="submit" class="btn btn-primary" data-ng-click="save()">
+                                            {{getWord('Save')}}
+                                        </button>
+                                    </footer>
+
+                                    <div data-ng-hide="message==''" data-ng-class="(savedSuccessfully) ? 'alert alert-success' : 'alert alert-danger'">
+                                        <i class="fa fa-check"></i>
+                                        <p>
+                                            {{message}}
+                                        </p>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+</div>

@@ -1,0 +1,242 @@
+﻿<div id="content">
+<div class="row">
+    <big-breadcrumbs items="['表单', '向导']" icon="table"
+                     class="col-xs-12 col-sm-7 col-md-7 col-lg-4"></big-breadcrumbs>
+    <div smart-include="app/layout/partials/sub-header.tpl.html"></div>
+</div>
+
+
+<!-- widget grid -->
+<section id="widget-grid" widget-grid>
+
+<!-- row -->
+<div class="row">
+
+
+<!-- NEW WIDGET START -->
+<article class="col-sm-12 col-md-12 col-lg-12">
+
+<!-- Widget ID (each widget will need unique ID)-->
+<div jarvis-widget id="wid-id-2" data-widget-editbutton="false" data-widget-deletebutton="false">
+<!-- widget options:
+usage: <div jarvis-widget id="wid-id-0" data-widget-editbutton="false">
+
+data-widget-colorbutton="false"
+data-widget-editbutton="false"
+data-widget-togglebutton="false"
+data-widget-deletebutton="false"
+data-widget-fullscreenbutton="false"
+data-widget-custombutton="false"
+data-widget-collapsed="true"
+data-widget-sortable="false"
+
+-->
+<header>
+    <h2> 测试申请单向导 </h2>
+</header>
+
+<!-- widget div-->
+<div>
+
+    <!-- widget content -->
+    <div class="widget-body fuelux"  data-smart-fuelux-wizard data-smart-wizard-callback="wizard2CompleteCallback">
+
+        <div class="wizard">
+            <ul class="steps">
+                <li data-step="1" class="active">
+                    <span class="badge badge-info">1</span>基本信息<span class="chevron"></span>
+                </li>
+                <li data-step="2">
+                    <span class="badge">2</span>样品信息<span class="chevron"></span>
+                </li>
+                <li data-step="3">
+                    <span class="badge">3</span>项目信息<span class="chevron"></span>
+                </li>
+                <li data-step="4">
+                    <span class="badge">4</span>预览<span class="chevron"></span>
+                </li>
+                <li data-step="5">
+                    <span class="badge">5</span>提交<span class="chevron"></span>
+                </li>
+            </ul>
+            <div class="actions">
+                <button type="button" class="btn btn-sm btn-primary btn-prev">
+                    <i class="fa fa-arrow-left"></i>上一步
+                </button>
+                <button type="button" class="btn btn-sm btn-success btn-next" data-last="Finish">
+                    下一步<i class="fa fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+        <div class="step-content">
+            <form class="form-horizontal">
+
+                <div class="step-pane active" data-step="1">
+                    <h3><strong>第一步 </strong> - 填写基本信息</h3>
+
+                    <!-- wizard form starts here -->
+                    <fieldset>
+
+                        <div class="form-group has-warning">
+                            <label class="col-md-2 control-label">申请人</label>
+
+                            <div class="col-md-10">
+                                <div class="input-group">
+                                    <input class="form-control" type="text">
+                                    <span class="input-group-addon"><i class="fa fa-warning"></i></span>
+                                </div>
+                                <span class="help-block">申请人为必填信息</span>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group has-error">
+                            <label class="col-md-2 control-label">测试目的</label>
+
+                            <div class="col-md-10">
+                                <div class="input-group">
+                                    <input class="form-control" type="text">
+                                        <span class="input-group-addon"><i
+                                                class="glyphicon glyphicon-remove-circle"></i></span>
+                                </div>
+                                    <span class="help-block"><i
+                                            class="fa fa-warning"></i> 请说明测试目的</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group has-success">
+                            <label class="col-md-2 control-label">测试单编号</label>
+
+                            <div class="col-md-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-info"></i></span>
+                                    <input class="form-control" type="text">
+                                    <span class="input-group-addon"><i class="fa fa-check"></i></span>
+                                </div>
+                                <span class="help-block">请输入测试单编号</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-2">申请日期</label>
+
+                            <div class="col-md-10">
+                                <div class="row">
+                                    <div class="col-sm-12">
+
+                                        <div class="input-icon-left">
+                                            <i class="fa txt-color-green fa-times"></i>
+                                            <input class="form-control" placeholder="Left Icon" type="text">
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </fieldset>
+
+                </div>
+
+                <div class="step-pane" data-step="2">
+                    <h3><strong>Step 2 </strong> - Alerts</h3>
+
+                    <div class="alert alert-warning fade in">
+                        <button class="close" data-dismiss="alert">
+                            ×
+                        </button>
+                        <i class="fa-fw fa fa-warning"></i>
+                        <strong>Warning</strong> Your monthly traffic is reaching limit.
+                    </div>
+
+                    <div class="alert alert-success fade in">
+                        <button class="close" data-dismiss="alert">
+                            ×
+                        </button>
+                        <i class="fa-fw fa fa-check"></i>
+                        <strong>Success</strong> The page has been added.
+                    </div>
+
+                    <div class="alert alert-info fade in">
+                        <button class="close" data-dismiss="alert">
+                            ×
+                        </button>
+                        <i class="fa-fw fa fa-info"></i>
+                        <strong>Info!</strong> You have 198 unread messages.
+                    </div>
+
+                    <div class="alert alert-danger fade in">
+                        <button class="close" data-dismiss="alert">
+                            ×
+                        </button>
+                        <i class="fa-fw fa fa-times"></i>
+                        <strong>Error!</strong> The daily cronjob has failed.
+                    </div>
+
+                </div>
+
+                <div class="step-pane" data-step="3">
+                    <h3><strong>Step 3 </strong> - Wizard continued</h3>
+                    <br>
+                    <br>
+
+                    <h1 class="text-center text-primary"> This will be your Step 3 </h1>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                </div>
+
+                <div class="step-pane" data-step="4">
+                    <h3><strong>Step 4 </strong> - Wizard continued...</h3>
+                    <br>
+                    <br>
+
+                    <h1 class="text-center text-danger"> This will be your Step 4 </h1>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                </div>
+
+                <div class="step-pane" data-step="5">
+                    <h3><strong>Step 5 </strong> - Finished!</h3>
+                    <br>
+                    <br>
+
+                    <h1 class="text-center text-success"><i class="fa fa-check"></i> Congratulations!
+                        <br>
+                        <small>Click finish to end wizard</small>
+                    </h1>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+    <!-- end widget content -->
+
+</div>
+<!-- end widget div -->
+
+</div>
+<!-- end widget -->
+
+</article>
+<!-- WIDGET END -->
+
+</div>
+
+<!-- end row -->
+
+</section>
+
+
+<!-- end widget grid -->
+
+
+</div>

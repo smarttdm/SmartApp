@@ -1,0 +1,52 @@
+﻿<!-- MAIN CONTENT -->
+<div id="content">
+
+    <div class="row">
+        <big-breadcrumbs items="[getWord('Home'), getWord('Data Viewer')]" class="col-xs-12 col-sm-12"></big-breadcrumbs>
+    </div>
+    <!-- widget grid -->
+    <section id="widget-grid" widget-grid>
+        <!-- row -->
+        <div class="row">
+            <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                <!-- /well -->
+                <div id="unitTreeContainer" class="well padding-10">
+                    <h5 class="margin-top-0"><i class="fa fa-tag"></i> {{getWord("Roles")}}:</h5>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <ul class="list-group no-margin">
+                                <li ng-class="role.obj_id === functionObjId? 'list-group-item list-group-item-info' : 'list-group-item'" ng-repeat="role in functions">
+                                    <a ng-click="getFunctionUsers(role.obj_id)">{{role.Text}} </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- /well -->
+                <div class="well padding-10">
+                    <h5 class="margin-top-0"><i class="fa fa-building"></i> {{getWord("Units")}}</h5>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <!-- content goes here -->
+                            <div class="tree smart-form">
+                                <ul data-smart-treeview data-items="unitTree" role="tree"></ul>
+                            </div>
+                            <!-- end content -->
+                        </div>
+                    </div>
+                </div>
+                <!-- /well -->
+            </div>
+
+            <article class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
+ 
+                <!-- table view div-->
+                <div id="datatable" data-ui-view="datatable" class="widget-body">
+                    <!-- content goes here -->
+                    <!-- end content -->
+                </div>
+                <!-- end table view view div -->
+            </article>
+        </div>
+    </section>
+</div>

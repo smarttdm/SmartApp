@@ -1,0 +1,76 @@
+<div id="content">
+
+<div class="row">
+    <big-breadcrumbs items="[getWord('Home'), getWord('Forum')]"
+                      class="col-xs-12 col-sm-7 col-md-7 col-lg-4"></big-breadcrumbs>
+</div>
+<!-- end row -->
+<!-- row -->
+<div class="row">
+    <div class="col-sm-9">
+    <div class="well">
+    <table class="table table-striped table-forum" ng-repeat="category in categories">
+        <thead>
+        <tr>
+            <th colspan="2">{{category.title}}</th>
+            <th class="text-center hidden-xs hidden-sm" style="width: 100px;">{{getWord("Topics")}}</th>
+            <th class="hidden-xs hidden-sm" style="width: 200px;">{{getWord("Creator")}}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- TR -->
+        <tr ng-repeat="group in category.groups">
+            <td class="text-center" style="width: 40px;"><i class= {{group.icon}}></i></td>
+            <td>
+                <h4><a ui-sref="app.forum.topics({schema: dbschema, class: dbclass, groupPK: group.id, groupId: group.obj_id, category: group.category, groupName: group.name})">
+                    {{group.name}}
+                </a>
+                    <small>{{group.desc}}</small>
+                </h4>
+            </td>
+            <td class="text-center hidden-xs hidden-sm">
+                {{group.topicQty}}
+            </td>
+            <td class="hidden-xs hidden-sm">
+                <a href-void>{{group.poster}}</a>
+                <br>
+                <small><i>{{group.postTime}}</i></small>
+            </td>
+        </tr>
+        <!-- end TR -->
+        </tbody>
+    </table>
+    </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="well padding-10">
+            <h5 class="margin-top-0"><i class="fa fa-search"></i> {{getWord("Search Topics")}}</h5>
+            <form name="searchform" ng-submit="searchTopics()">
+                <div class="input-group">
+                    <input type="text" class="form-control" ng-model="keywords">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button" ng-click="searchTopics()">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </span>
+                </div>
+            </form>
+            <!-- /input-group -->
+        </div>
+        <div class="well padding-10">
+            <h5 class="margin-top-0"><i class="fa fa-fire"></i> {{getWord("Popular Topics")}}</h5>
+            <ul class="padding-2 list-unstyled">
+                <li class="padding-5" ng-repeat="topic in populartopics">
+                    <a class="margin-top-0" ui-sref="app.forum.topics.post({schema: dbschema, class: dbclass, groupId: groupId, topicId: topic.obj_id, topicName: topic.name, topicPK: topic.id})">{{topic.name}}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- end row -->
+<!-- row -->
+<div class="row">
+    <!-- a blank row to get started -->
+</div>
+<!-- end row -->
+</div>

@@ -1,0 +1,250 @@
+<div id="content">
+
+
+<div class="row">
+    <big-breadcrumbs items="[getWord('Home'), getWord('My Space')]"
+                     class="col-xs-12 col-sm-12"></big-breadcrumbs>
+</div>
+<!-- end row -->
+<!-- row -->
+<div class="row">
+    <div class="col-sm-12">
+    <div class="well well-sm">
+        <div class="row">
+            <div class="col-sm-12 col-md-3 col-lg-3">
+                <div class="well well-light well-sm no-margin no-padding">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div id="myCarousel" class="carousel fade profile-carousel">
+                                <div class="air air-bottom-right padding-10">
+                                    <a ui-sref=".uploadpicture" class="btn txt-color-white bg-color-teal btn-sm"><i class="fa fa-picture-o"></i>{{getWord("Change Photo")}}</a>
+                                </div>
+                                <div class="air air-top-left padding-10">
+                                    <h4 class="txt-color-white font-md">2016-07-20</h4>
+                                </div>
+                                <ol class="carousel-indicators">
+                                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                                    <li data-target="#myCarousel" data-slide-to="1" class></li>
+                                    <li data-target="#myCarousel" data-slide-to="2" class></li>
+                                </ol>
+                                <div class="carousel-inner">
+                                    <!-- Slide 1 -->
+                                    <div class="item active">
+                                        <img src="styles/img/demo/s1.jpg" alt="demo user">
+                                    </div>
+                                    <!-- Slide 2 -->
+                                    <div class="item">
+                                        <img src="styles/img/demo/s2.jpg" alt="demo user">
+                                    </div>
+                                    <!-- Slide 3 -->
+                                    <div class="item">
+                                        <img src="styles/img/demo/m3.jpg" alt="demo user">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="row">
+                                <div class="col-sm-3 profile-pic">
+                                    <img ng-src="{{user.image()}}" alt="{{user.userName}}">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-3 col-sm-3">
+                                    <span>&nbsp;</span>
+                                </div>
+                                <div class="col-xs-9 col-sm-9">
+                                    <h1>
+                                        <span class="semi-bold">{{user.displayName}}</span>
+                                        <br>
+                                        <small> {{user.division}}</small>
+                                    </h1>
+                                    <ul class="list-unstyled">
+                                        <li>
+                                            <p class="text-muted">
+                                                <i class="fa  fa-tag"></i>&#xA0;&#xA0;{{user.userName}}</span>
+                                            </p>
+                                        </li>
+                                        <li>
+                                            <p class="text-muted">
+                                                <i class="fa fa-phone"></i>&#xA0;&#xA0;{{user.phoneNumber}}</span>
+                                            </p>
+                                        </li>
+                                        <li>
+                                            <p class="text-muted">
+                                                <i class="fa fa-envelope"></i>&#xA0;&#xA0;<a ng-href="mailto:{{user.email}}">{{user.email}}</a>
+                                            </p>
+                                        </li>
+                                        <li>
+                                            <p class="text-muted">
+                                                <i class="fa fa-building"></i>&#xA0;&#xA0;<span class="txt-color-darken">{{user.division}}</span>
+                                            </p>
+                                        </li>
+                                        <li>
+                                            <p class="text-muted">
+                                                <i class="fa fa-home"></i>&#xA0;&#xA0;<span class="txt-color-darken">{{user.address}}</span>
+                                            </p>
+                                        </li>
+                                    </ul>
+                                    <br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-9 col-lg-9">
+                <div class="well well-light well-sm no-margin no-padding">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="padding-10">
+                                <ul class="nav nav-tabs tabs-pull-left">
+                                    <li class="active">
+                                        <a href="#tasks" data-toggle="tab">{{getWord("MyTasks")}}({{taskCount}})</a>
+                                    </li>
+                                    <li>
+                                        <a href="#messages" data-toggle="tab">{{getWord("My Messages")}}({{currentActivityItems.length}})</a>
+                                    </li>
+                                    <li>
+                                        <a href="#blogs" data-toggle="tab">{{getWord("My Blogs")}}({{blogs.length}})</a>
+                                    </li>
+                                    <li>
+                                        <a href="#finishedTasks" data-toggle="tab">{{getWord("Finished Tasks")}}</a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content padding-top-10">
+                                    <div class="tab-pane fade in active" id="tasks">
+                                        <div class="row padding-10">
+                                            <table st-table="rowCollection" class="table table-striped table-bordered table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th st-sort="TaskID">{{getWord('TaskID')}}</th>
+                                                        <th st-sort="Subject">{{getWord('Subject')}}</th>
+                                                        <th st-sort="Description">{{getWord('Description')}}</th>
+                                                        <th st-sort="CreatedTime">{{getWord('CreatedTime')}}</th>
+                                                        <th>{{getWord('ReassignTask')}}</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr ng-repeat="row in rowCollection">
+                                                        <td ui-sref="app.tasks.form({schema: dbschema, taskid: row.taskId})">{{row.taskId}}</td>
+                                                        <td ui-sref="app.tasks.form({schema: dbschema, taskid: row.taskId})">{{row.subject}}</td>
+                                                        <td ui-sref="app.tasks.form({schema: dbschema, taskid: row.taskId})">{{row.description}}</td>
+                                                        <td ui-sref="app.tasks.form({schema: dbschema, taskid: row.taskId})">{{row.createTime | date : 'shortTime'}}</td>
+                                                        <td align="center" ui-sref=".reassign({schema: dbschema, taskid: row.taskId})"><i class="fa fa-user"></i></td>
+                                                    </tr>
+                                                </tbody>
+                                                <tfoot>
+                                                    <tr>
+                                                        <td class="text-center" st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="numOfPages" colspan="5"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-center" colspan="5">
+                                                            <button class="btn btn-primary" ng-click="RefreshTasks()"> {{getWord("Refresh")}} </button>
+                                                            <button class="btn btn-primary" ng-click="OpenSetSubstitute()"> {{getWord("Set Task Substitution")}} </button>
+                                                        </td>
+                                                    </tr>
+                                                </tfoot>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="messages">
+                                        <ul class="notification-body">
+                                            <li ng-repeat="msg in currentActivityItems">
+                                                <span ng-class="{unread : msg.status == 'unread'}">
+                                                    <a href="javascript:void(0);" ng-click="readMsg(msg)" class="msg">
+                                                        <img ng-src="{{getPosterImage(msg.posterId)}}" alt="" class="air air-top-left margin-top-5" width="40" height="40" />
+                                                        <span class="from">{{msg.poster}}</span>
+                                                        <time>{{msg.postTime}}</time>
+                                                        <span class="subject">{{msg.subject}}</span>
+                                                        <span class="msg-body">{{msg.content}}</span>
+                                                    </a>
+                                                </span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="tab-pane fade" id="blogs">
+                                        <div class="row padding-10">
+                                            <div class="well padding-10">
+                                                <div ng-if="!blogs.length" class="text-center">
+                                                    <h3>{{getWord("No Blogs")}}</h3>
+                                                </div>
+                                                <div ng-repeat="blog in blogs">
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <img ng-src="{{blog.image}}" class="img-responsive" alt="styles/img">
+                                                            <ul class="list-inline padding-10">
+                                                                <li>
+                                                                    <i class="fa fa-calendar"></i>
+                                                                    <a href-void>{{blog.postTime}}</a>
+                                                                </li>
+                                                                <li>
+                                                                    <i class="fa fa-comments"></i>
+                                                                    <a href-void>{{blog.commentQty}}</a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="col-md-8 padding-left-0">
+                                                            <h3 class="margin-top-0"><a ui-sref="app.blog.view({blogclass: blogClass, oid: blog.obj_id})">{{blog.name}}</a><br><small class="font-xs"><i>{{getWord("Blog Author")}} <a href-void>{{blog.poster}}</a></i></small></h3>
+                                                            <div style="padding-bottom:10px">{{blog.abstract}}</div>
+
+                                                            <a class="btn btn-primary" ui-sref="app.blog.view({schema: dbschema, blogclass: blogClass, oid: blog.obj_id})"> {{getWord("Read more")}} </a>
+                                                            <a class="btn btn-warning" ui-sref="app.blog.post({schema: dbschema, blogclass: blogClass, oid: blog.obj_id})"> {{getWord("Edit")}} </a>
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a class="btn btn-success" ui-sref="app.blog.post({schema: dbschema, blogclass: blogClass})"> {{getWord("Add Blog")}} </a>
+                                    </div>
+                                    <div class="tab-pane fade" id="finishedTasks">
+                                        <div class="row padding-10">
+                                            <table st-table="finishedTasks" class="table table-striped table-bordered table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th st-sort="TaskID">{{getWord('TaskID')}}</th>
+                                                        <th st-sort="Subject">{{getWord('Subject')}}</th>
+                                                        <th st-sort="Description">{{getWord('Description')}}</th>
+                                                        <th st-sort="CreatedTime">{{getWord('CreatedTime')}}</th>
+                                                        <th st-sort="FinishedTime">{{getWord('FinishedTime')}}</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr ng-repeat="row in finishedTasks">
+                                                        <td ui-sref=".finished({schema: dbschema, taskid: row.taskId})">{{row.taskId}}</td>
+                                                        <td ui-sref=".finished({schema: dbschema, taskid: row.taskId})">{{row.subject}}</td>
+                                                        <td ui-sref=".finished({schema: dbschema, taskid: row.taskId})">{{row.description}}</td>
+                                                        <td ui-sref=".finished({schema: dbschema, taskid: row.taskId})">{{row.createTime | date : 'shortTime'}}</td>
+                                                        <td ui-sref=".finished({schema: dbschema, taskid: row.taskId})">{{row.finishTime | date : 'shortTime'}}</td>
+                                                    </tr>
+                                                </tbody>
+                                                <tfoot>
+                                                    <tr>
+                                                        <td class="text-center" st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="numOfPagesForFinished" colspan="5"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-center" colspan="5">
+                                                            <button class="btn btn-primary" ng-click="showFinishedTasks()"> {{getWord("Search")}} </button>
+                                                            <button class="btn btn-primary" ng-click="clearFinishedTasks()"> {{getWord("Clear")}} </button>
+                                                        </td>
+                                                    </tr>
+                                                </tfoot>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end tab -->
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end row -->
+                 </div>
+             </div>
+            </div>
+            <!-- end row -->
+            </div>
+        </div>
+    <!-- end row -->
+</div>

@@ -1,0 +1,47 @@
+<div id="openFileCtrl" ng-controller="openFileCtrl" style="overflow:hidden">
+    <style media="screen" type="text/css">
+        open-file-section {
+            width: 90%;
+            height: 500px;
+            margin: 20px;
+            padding: 10px;
+        }
+        div#one {
+            width: 45%;
+            height: 420px;
+            overflow-y: scroll;
+            overflow-x: auto;
+            float: left;
+        }
+        div#two {
+            margin-left: 48%;
+            height: 420px;
+            overflow-y: hidden;
+            overflow-x: hidden;
+        }
+    </style>
+
+    <open-file-section>
+        <div id="one">
+            <h3>{{getWord("Select Class")}}</h3>
+            <div style="height:96%;border: 1px solid black" data-angular-treeview="true"
+                    data-tree-id="classes"
+                    data-tree-model="treedata"
+                    data-node-id="name"
+                    data-node-label="title"
+                    data-node-children="children">
+            </div>
+        </div>
+        <div id="two">
+            <h3>{{getWord("Existing Forms")}}</h3>
+            <select style="width:100%;height:88%;border: 1px solid black" size="25" ng-model="selectedVal" ng-change="selectFile()">
+                <option ng-repeat="filename in filenames">{{filename}}</option>
+            </select>
+            <br />
+            <div style="width:100%;height:12%" class="padding-5">
+                <label>{{getWord("Form Name")}}</label>
+                <input type="text" style="border:1px solid black;width:200px" id="formName" name="fileName" ng-model="editorService.formInfo.formName" />
+            </div>
+        </div>
+    </open-file-section>
+</div>

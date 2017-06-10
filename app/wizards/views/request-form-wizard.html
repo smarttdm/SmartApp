@@ -1,0 +1,118 @@
+﻿<div id="content">
+    <div class="row">
+        <big-breadcrumbs items="[getWord('Home'), getWord('TestRequest')]" class="col-xs-12 col-sm-12"></big-breadcrumbs>
+    </div>
+
+    <!-- widget grid -->
+    <section id="widget-grid" widget-grid>
+
+    <!-- row -->
+    <div class="row">
+
+
+    <!-- NEW WIDGET START -->
+    <article class="col-sm-12 col-md-12 col-lg-12">
+
+    <!-- Widget ID (each widget will need unique ID)-->
+    <div jarvis-widget id="wid-id-2" data-widget-editbutton="false" data-widget-deletebutton="false">
+    <!-- widget options:
+    usage: <div jarvis-widget id="wid-id-0" data-widget-editbutton="false">
+
+    data-widget-colorbutton="false"
+    data-widget-editbutton="false"
+    data-widget-togglebutton="false"
+    data-widget-deletebutton="false"
+    data-widget-fullscreenbutton="false"
+    data-widget-custombutton="false"
+    data-widget-collapsed="true"
+    data-widget-sortable="false"
+
+    -->
+    <header>
+        <h2> {{getWord('RequestWizard')}} </h2>
+    </header>
+
+<!-- widget div-->
+<div>
+
+    <!-- widget content -->
+    <div class="widget-body fuelux" data-ebaas-wizard="wizardInstance"  data-ebaas-form-wizard
+          data-ebaas-wizard-step-changed="wizardStepChanged" data-ebaas-wizard-step-entered="wizardStepEntered" data-ebaas-wizard-callback="wizardCompleteCallback">
+
+        <div class="wizard" id="myWizard">
+            <ul class="steps">
+                <li data-step="1" class="active">
+                    <span class="badge badge-info">1</span>{{getWord('ReqestBasicInfo')}}<span class="chevron"></span>
+                </li>
+                <li data-step="2">
+                    <span class="badge">2</span>{{getWord('SampleItemInfo')}}<span class="chevron"></span>
+                </li>
+                <li data-step="3">
+                    <span class="badge">3</span>{{getWord('ReqestPreview')}}<span class="chevron"></span>
+                </li>
+            </ul>
+            <div class="actions">
+                <button type="button" ng-disabled="!allowGoPrev" class="btn btn-sm btn-primary btn-prev">
+                    <i class="fa fa-arrow-left"></i>{{getWord('PreviousStep')}}
+                </button>
+                <button type="button" ng-disabled="!allowGoNext || loading" class="btn btn-sm btn-success btn-next" button-spinner="loading">
+                    {{getNextStepWord('NextStep')}}<i class="fa fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+        <div class="step-content">
+            <div class="step-pane active" data-step="1" disablePreviousStep="true">
+                <h3>{{getWord('FisrtStep')}}:{{getWord('RequestWizardFirstStep')}}</h3>
+
+                <!-- step to get request general info -->
+                
+                <request-info-step dbschema="dbschema" dbclass="dbclass" template="params['requestFormName']" control="firstStepControl" step-callback="firstStepCallback(instance)" ></request-info-step>
+
+            </div>
+
+            <div class="step-pane" data-step="2">
+                <h3>{{getWord('SecondStep')}}: {{getWord('RequestWizardSecondStep')}}</h3>
+
+                <div data-ng-hide="message == ''" class="alert alert-danger">
+                    {{message}}
+                </div>
+
+                <sample-item-step dbschema="dbschema" dbclass="dbclass"
+                                      control="secondStepControl"
+                                      step-callback="secondStepCallback()"></sample-item-step>
+
+            </div>
+
+            <div class="step-pane" data-step="3">
+                <h3>{{getWord('ThirdStep')}}: {{getWord('RequestWizardThirdStep')}}</h3>
+                <!-- step to get request general info -->
+
+                <preview-submit-step dbschema="dbschema" dbclass="dbclass" template="params['requestFormName']" taskId="taskId" control="thirdStepControl" step-callback="thirdStepCallback(instance)"></preview-submit-step>
+            
+            </div>
+
+        </div>
+
+    </div>
+    <!-- end widget content -->
+
+</div>
+<!-- end widget div -->
+
+</div>
+<!-- end widget -->
+
+</article>
+<!-- WIDGET END -->
+
+</div>
+
+<!-- end row -->
+
+</section>
+
+
+<!-- end widget grid -->
+
+
+</div>

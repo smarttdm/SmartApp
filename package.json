@@ -1,0 +1,24 @@
+{
+  "name": "ebaas",
+  "version": "7.0.0",
+  "description": "Enterprise Backend As An Service for SPA",
+  "main": "index.html",
+  "keywords": [
+    "baas",
+    "SPA",
+    "Angular",
+    "Newtera"
+  ],
+  "author": "Newtera",
+  "homepage": "www.ebaas.cn",
+  "license": "",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-angular-templatecache": "^1.7.0",
+    "gulp-connect": "^2.2.0",
+    "gulp-ng-annotate": "^1.0.0",
+    "gulp-uglify": "^1.2.0",
+    "event-stream": "~3.3.1"
+  }
+}

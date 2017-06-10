@@ -1,0 +1,70 @@
+<div id="insertPropertyCtrl" ng-controller="insertPropertyCtrl" style="overflow:hidden">
+    <style media="screen" type="text/css">
+        insert-property-section {
+            width: 90%;
+            height: 500px;
+            margin: 20px;
+            padding: 10px;
+        }
+        div#one {
+            width: 45%;
+            height: 420px;
+            float: left;
+            overflow-y: hidden;
+            overflow-x: hidden;
+        }
+        div#two {
+            margin-left: 48%;
+            height: 420px;
+            overflow-y: hidden;
+            overflow-x: hidden;
+            border: 0px ;
+        }
+        div#three {
+            width: 100%;
+            height: 150px;
+            overflow-y: scroll;
+            overflow-x: auto;
+        }
+    </style>
+
+    <insert-property-section>
+        <div id="one">
+            <h3>{{getWord("Base class and related classes")}}</h3>
+            <div id="three">
+                <div style="border:1px solid black;">
+                    <div data-angular-treeview="true"
+                         data-tree-id="classes"
+                         data-tree-model="treedata"
+                         data-node-id="name"
+                         data-node-label="title"
+                         data-node-children="children">
+                    </div>
+                </div>
+            </div>
+            <br />
+            <h3>{{getWord("Leaf Class")}}</h3>
+            <select style="width:100%;border: 1px solid black" size="15" name="leafClasses"
+                    ng-init="selectedLeafClass = leafClasses[0]"
+                    ng-model="selectedLeafClass"
+                    ng-change="selectLeafClass()"
+                    ng-options="leafClass.title for leafClass in leafClasses"></select>
+        </div>
+        <div id="two">
+            <h3>{{getWord("Class Properties")}}</h3>
+            <select style="width:100%;height:88%;border: 1px solid black" size="26" name="classProperties"
+                    ng-init="selectedClassProperty = properties[0]"
+                    ng-model="selectedClassProperty"
+                    ng-change="selectProperty()"
+                    ng-options="property.title for property in properties"></select>
+            <br />
+            <div style="width:100%;height:12%" class="padding-5">
+                <label>{{getWord("ReadOnly")}} </label>
+                <input type="checkbox" name="readobly" ng-model="isReadOnly" />
+                &nbsp;&nbsp;&nbsp;
+                <label>{{getWord("Include Label")}} </label>
+                <input type="checkbox" name="includeLabel" ng-model="includeLabel" />
+            </div>
+        </div>
+    </>
+</div>

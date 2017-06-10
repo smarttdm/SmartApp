@@ -1,0 +1,222 @@
+{
+  "prebuild": [
+    "jquery",
+    "jquery-ui",
+    "lodash",
+    "bootstrap",
+    "intro",
+    "angular",
+    "angular-sanitize",
+    "angular-animate",
+    "angular-ui-router",
+    "angular-resource",
+    "angular-bootstrap",
+    "angular-mock",
+    "angular-intro",
+    "angular-superbox",
+    "angular-swipe",
+    "angular-carousel-3d",
+    "angular-pdf",
+    "restangular",
+    "fastclick",
+    "moment",
+    "moment-timezone",
+    "fullcalendar",
+    "notification",
+    "smartwidgets",
+    "easy-pie",
+    "angular-local-storage",
+    "angular-translate",
+    "angular-smart-table",
+    "bootstrap-decorator",
+    "devExtreme-globalize",
+    "devExtreme-localization",
+    "devExtreme-webapp",
+    "DlhSoft-Kanban",
+    "angular-summernote",
+    "alasql",
+    "js-xlsx",
+    "ngprogress",
+    "angular-treeview",
+    "ng-file-upload",
+    "ng-img-crop",
+    "bootstrap3-dialog"
+  ],
+  "paths": {
+
+    "jquery": "plugin/jquery/dist/jquery.min.js",
+    "jquery-ui": "plugin/jquery-ui/jquery-ui.min.js",
+    "bootstrap": "plugin/bootstrap/dist/js/bootstrap.min.js",
+    "intro": "plugin/intro/intro.min.js",
+
+    "angular": "plugin/angular/angular.min.js",
+    "angular-resource": "plugin/angular-resource/angular-resource.min.js",
+    "restangular": "plugin/restangular/dist/restangular.min.js",
+    "angular-sanitize": "plugin/angular-sanitize/angular-sanitize.min.js",
+    "angular-animate": "plugin/angular-animate/angular-animate.js",
+    "angular-ui-router": "plugin/angular-ui-router/release/angular-ui-router.min.js",
+    "angular-mock": "plugin/angular-mock/angular-mocks.js",
+    "angular-intro": "plugin/angular-intro/angular-intro.min.js",
+    "angular-superbox": "plugin/angular-superbox/angular-superbox.js",
+    "angular-treeview": "plugin/angular-treeview/angular.treeview.min.js",
+    "angular-swipe":  "plugin/angular-swipe/dist/angular-swipe.min.js",
+    "angular-carousel-3d": "plugin/angular-carousel-3d/dist/carousel-3d.min.js", 
+    "angular-pdf": "plugin/angular-pdf/angular-pdf.min.js",
+
+    "angular-bootstrap": "plugin/angular-bootstrap/ui-bootstrap-tpls.min.js",
+
+    "angular-easyfb": "plugin/angular-easyfb/angular-easyfb.min.js",
+    "angular-google-plus": "plugin/angular-google-plus/dist/angular-google-plus.min.js",
+
+    "pace":"plugin/pace/pace.min.js",
+
+    "fastclick": "plugin/fastclick/lib/fastclick.js",
+
+    "jquery-color": "plugin/jquery-color/jquery.color.js",
+
+    "select2": "plugin/select2/select2.3.5.1.min.js",
+
+    "angular-summernote": "plugin/angular-summernote/dist/angular-summernote.min.js",
+    "summernote": "plugin/summernote/dist/summernote.min.js",
+
+    "he": "plugin/he/he.js",
+    "to-markdown": "plugin/to-markdown/src/to-markdown.js",
+    "markdown": "plugin/markdown/lib/markdown.js",
+    "bootstrap-markdown": "plugin/bootstrap-markdown/js/bootstrap-markdown.js",
+
+    "ckeditor": "plugin/ckeditor/ckeditor.js",
+
+    "moment": "plugin/moment/min/moment-with-locales.min.js",
+    "moment-timezone": "plugin/moment-timezone/builds/moment-timezone.min.js",
+
+    "sparkline": "plugin/relayfoods-jquery.sparkline/dist/jquery.sparkline.min.js",
+    "easy-pie": "plugin/jquery.easy-pie-chart/dist/jquery.easypiechart.min.js",
+
+    "flot": "plugin/flot/jquery.flot.cust.min.js",
+    "flot-resize": "plugin/flot/jquery.flot.resize.min.js",
+    "flot-fillbetween": "plugin/flot/jquery.flot.fillbetween.min.js",
+    "flot-orderBar": "plugin/flot/jquery.flot.orderBar.min.js",
+    "flot-pie": "plugin/flot/jquery.flot.pie.min.js",
+    "flot-time": "plugin/flot/jquery.flot.time.min.js",
+    "flot-selection": "plugin/flot/jquery.flot.selection.min.js",
+    "flot-tooltip": "plugin/flot/jquery.flot.tooltip.min.js",
+
+    "raphael": "plugin/morris/raphael.min.js",
+    "morris": "plugin/morris/morris.min.js",
+
+    "dygraphs": "plugin/dygraphs/dygraph-combined.min.js",
+
+    "chartjs": "plugin/chartjs/chart.min.js",
+
+    "datatables": "plugin/datatables/media/js/jquery.dataTables.min.js",
+    "datatables-bootstrap": "plugin/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.js",
+    "datatables-tools": "plugin/datatables-tabletools/js/dataTables.tableTools.js",
+    "datatables-colvis": "plugin/datatables-colvis/js/dataTables.colVis.js",
+    "datatables-responsive": "plugin/datatables-responsive/files/1.10/js/datatables.responsive.js",
+
+
+    "jqgrid":"plugin/jqgrid/js/minified/jquery.jqGrid.min.js",
+    "jqgrid-locale-en":"plugin/jqgrid/js/i18n/grid.locale-en.js",
+
+
+    "jquery-maskedinput": "plugin/jquery-maskedinput/dist/jquery.maskedinput.min.js",
+    "jquery-validation": "plugin/jquery-validation/dist/jquery.validate.min.js",
+    "jquery-form": "plugin/jquery-form/jquery.form",
+
+    "bootstrap-validator": "plugin/bootstrapvalidator/dist/js/bootstrapValidator.min.js",
+
+    "bootstrap-timepicker": "plugin/bootstrap3-fontawesome-timepicker/js/bootstrap-timepicker.min.js",
+    "clockpicker": "plugin/clockpicker/dist/bootstrap-clockpicker.min.js",
+    "nouislider": "plugin/nouislider/distribute/jquery.nouislider.7.0.9.min.js",
+    "ionslider": "plugin/ion.rangeSlider/js/ion.rangeSlider.1.9.3.min.js",
+    "bootstrap-duallistbox": "plugin/bootstrap-duallistbox/dist/jquery.bootstrap-duallistbox.min.js",
+    "bootstrap-colorpicker": "plugin/bootstrap-colorpicker/js/bootstrap-colorpicker.js",
+    "jquery-knob": "plugin/jquery-knob/dist/jquery.knob.min.js",
+    "bootstrap-slider": "plugin/seiyria-bootstrap-slider/dist/bootstrap-slider.4.0.7.min.js",
+    "bootstrap-tagsinput": "plugin/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js",
+    "x-editable": "plugin/x-editable/dist/bootstrap3-editable/js/bootstrap-editable.js",
+
+    "fuelux-wizard": "plugin/fuelux/js/wizard.js",
+
+    "dropzone": "plugin/dropzone/downloads/dropzone.min.js",
+
+    "jcrop": "plugin/jcrop/js/jquery.Jcrop.min.js",
+
+
+    "bootstrap-progressbar": "plugin/bootstrap-progressbar/bootstrap-progressbar.min.js",
+    "jquery-nestable": "plugin/jquery-nestable/jquery.nestable.js",
+
+    "superbox": "plugin/superbox/superbox.js",
+
+    "jquery-jvectormap": "plugin/vectormap/jquery-jvectormap-1.2.2.min.js",
+    "jquery-jvectormap-world-mill-en": "plugin/vectormap/jquery-jvectormap-world-mill-en.js",
+
+
+    "lodash": "plugin/lodash/lodash.min.js",
+
+
+    "magnific-popup": "plugin/magnific-popup/dist/jquery.magnific-popup.js",
+
+    "fullcalendar": "smartadmin-plugin/fullcalendar/jquery.fullcalendar.min.js",
+    "smartwidgets": "smartadmin-plugin/smartwidgets/jarvis.widget.min.js",
+
+    "notification": "smartadmin-plugin/notification/SmartNotification.min.js",
+
+    "angular-local-storage": "plugin/angular-local-storage/dist/angular-local-storage.min.js",
+
+    "angular-translate":  "plugin/angular-translate/angular-translate.min.js",
+
+    "angular-smart-table": "plugin/angular-smart-table/dist/smart-table.min.js",
+
+    "bootstrap-decorator": "plugin/angular-schema-form/dist/bootstrap-decorator.min.js",
+
+    "DlhSoft-Kanban":  "plugin/DlhSoft.KanbanLibrary/content/Scripts/DlhSoft.Kanban.Angular.Components.js",
+
+    "devExtreme-globalize": "plugin/devExtreme/js/globalize.min.js",
+    "devExtreme-localization": "plugin/devExtreme/js/localization/dx.webappjs.cn.js",
+    "devExtreme-webapp": "plugin/devExtreme/js/dx.webappjs.js",
+
+    "alasql": "plugin/alasql/alasql.min.js",
+    "js-xlsx": "plugin/js-xlsx/xlsx.core.min.js",
+
+    "ngprogress": "plugin/ngprogress/ngprogress.min.js",
+    "ng-file-upload": "plugin/ng-file-upload/ng-file-upload.min.js",
+    "ng-img-crop": "plugin/ng-img-crop/ng-img-crop.js",
+
+    "bootstrap3-dialog": "plugin/bootstrap3-dialog/js/bootstrap-dialog.min.js"
+  },
+  "shim": {
+    "to-markdown": {"deps": ["he"]},
+
+    "bootstrap-markdown": { "deps": ["markdown", "to-markdown"]},
+
+    "moment-timezone": { "deps": ["moment"]},
+    "moment-timezone-data": { "deps": ["moment"]},
+    "moment-helper": { "deps": ["moment-timezone-data"]},
+    "bootstrap-daterangepicker": { "deps": ["moment"]},
+
+    "flot-resize": { "deps": ["flot"]},
+    "flot-fillbetween": { "deps": ["flot"]},
+    "flot-orderBar": { "deps": ["flot"]},
+    "flot-pie": { "deps": ["flot"]},
+    "flot-time": { "deps": [ "flot" ] },
+    "flot-selection": { "deps": ["flot"]},
+    "flot-tooltip": { "deps": ["flot"]},
+
+    "morris": {"deps": ["raphael"]},
+
+    "datatables-colvis":{"deps": ["datatables"]},
+    "datatables-tools":{"deps": ["datatables"]},
+    "datatables-bootstrap":{"deps": ["datatables"]},
+    "datatables-responsive": {"deps": ["datatables"]},
+
+    "jqgrid-locale-en" : {"deps": ["jqgrid"]},
+
+    "jcrop":{"deps": ["jquery-color"]},
+
+    "jquery-jvectormap-world-mill-en": { "deps": ["jquery-jvectormap"]},
+
+    "smartwidgets": { "deps": ["jquery-ui"]}
+
+  }
+}   

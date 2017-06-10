@@ -1,0 +1,295 @@
+/*
+ * It is advised not to edit the smartadmin_production.css
+ * as this will override any changes you make in the 
+ * later versions of this theme. 
+ * 
+ * We advise that you use use this CSS to override 
+ * SmartAdmin styles. 
+ * 
+ * Rename the stylesheet to whatever your liking so it will stay
+ * unique to you with each update of SmartAdmin.
+ */
+
+/*
+ * INDEX
+ * 
+ * - HTML
+ * - BODY
+ * - CUSTOM STYLES
+ */
+
+/***** DASHBOARD: QUICK PAGE ACCESS *****/
+.panel-quick-page {
+  margin: 0 0 20px;
+}
+.panel-quick-page > div {
+  padding: 0;
+}
+.panel-quick-page > div .panel {
+  border-radius: 0;
+  margin-left: 1px;
+  margin-bottom: 1px;
+}
+.panel-quick-page > div .panel:hover,
+.panel-quick-page > div .panel:focus {
+  cursor: pointer;
+  position: relative;
+}
+@media (max-width: 360px) {
+  .panel-quick-page > div {
+    width: 50%;
+  }
+}
+@media (max-width: 560px) {
+  .panel-quick-page > div .panel-heading {
+    padding: 10px;
+  }
+}
+@media (max-width: 560px) {
+  .panel-quick-page > div .panel-title {
+    font-size: 11px;
+  }
+}
+.panel-quick-page > div:first-child .panel {
+  margin-left: 0;
+  border-top-left-radius: 2px;
+}
+@media (max-width: 360px) {
+  .panel-quick-page > div:nth-child(2) .panel {
+    border-top-right-radius: 2px;
+  }
+}
+@media (max-width: 991px) {
+  .panel-quick-page > div:nth-child(3) .panel {
+    border-top-right-radius: 2px;
+  }
+}
+@media (max-width: 360px) {
+  .panel-quick-page > div:nth-child(3) .panel {
+    border-top-right-radius: 0;
+  }
+}
+.panel-quick-page > div:nth-child(4) .panel {
+  border-top-right-radius: 2px;
+}
+@media (max-width: 991px) {
+  .panel-quick-page > div:nth-child(4) .panel {
+    margin-left: 0;
+    border-top-right-radius: 0;
+  }
+}
+.panel-quick-page > div:nth-child(5) .panel {
+  margin-left: 1px;
+  border-bottom-left-radius: 2px;
+}
+@media (max-width: 991px) {
+  .panel-quick-page > div:nth-child(5) .panel {
+    margin-left: 1px;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+  }
+}
+@media (max-width: 991px) {
+  .panel-quick-page > div:nth-child(7) .panel {
+    margin-left: 0;
+    border-bottom-left-radius: 2px;
+  }
+}
+@media (max-width: 360px) {
+  .panel-quick-page > div:nth-child(7) .panel {
+    border-bottom-left-radius: 0;
+  }
+}
+.panel-quick-page > div:last-child .panel {
+  border-bottom-right-radius: 2px;
+}
+@media (max-width: 360px) {
+  .panel-quick-page > div:nth-child(odd) > .panel {
+    margin-left: 0;
+  }
+  .panel-quick-page > div:nth-child(even) > .panel {
+    margin-left: 1px;
+  }
+  .panel-quick-page > div:last-child {
+    width: 100%;
+  }
+  .panel-quick-page > div:last-child > .panel {
+    border-bottom-right-radius: 2px;
+    border-bottom-left-radius: 2px;
+  }
+}
+.panel-quick-page .hvr-shutter-out-vertical {
+  display: block;
+}
+.panel-quick-page .page-blue > .panel {
+  background-color: #2ab0c0;
+  -webkit-transition: all 0.2s ease-out 0s;
+  -o-transition: all 0.2s ease-out 0s;
+  transition: all 0.2s ease-out 0s;
+}
+.panel-quick-page .page-blue > .panel:hover,
+.panel-quick-page .page-blue > .panel:focus {
+  background-color: #259dab;
+}
+.panel-quick-page .page-navy > .panel {
+  background-color: #31b0d5;
+  -webkit-transition: all 0.2s ease-out 0s;
+  -o-transition: all 0.2s ease-out 0s;
+  transition: all 0.2s ease-out 0s;
+}
+.panel-quick-page .page-navy > .panel:hover,
+.panel-quick-page .page-navy > .panel:focus {
+  background-color: #28a1c5;
+}
+.panel-quick-page .page-lightblue > .panel {
+  background-color: #469bd7;
+  -webkit-transition: all 0.2s ease-out 0s;
+  -o-transition: all 0.2s ease-out 0s;
+  transition: all 0.2s ease-out 0s;
+}
+.panel-quick-page .page-lightblue > .panel:hover,
+.panel-quick-page .page-lightblue > .panel:focus {
+  background-color: #2a82c0;
+}
+.panel-quick-page .page-darkblue > .panel {
+  background-color: #2a82c0;
+  -webkit-transition: all 0.2s ease-out 0s;
+  -o-transition: all 0.2s ease-out 0s;
+  transition: all 0.2s ease-out 0s;
+}
+.panel-quick-page .page-darkblue > .panel:hover,
+.panel-quick-page .page-darkblue > .panel:focus {
+  background-color: #2574ab;
+}
+.panel-quick-page .page-darkred > .panel {
+  background-color: #de6489;
+  -webkit-transition: all 0.2s ease-out 0s;
+  -o-transition: all 0.2s ease-out 0s;
+  transition: all 0.2s ease-out 0s;
+}
+.panel-quick-page .page-darkred > .panel:hover,
+.panel-quick-page .page-darkred > .panel:focus {
+  background-color: #d43a69;
+}
+.panel-quick-page .page-orange > .panel {
+  background-color: #e27c79;
+  -webkit-transition: all 0.2s ease-out 0s;
+  -o-transition: all 0.2s ease-out 0s;
+  transition: all 0.2s ease-out 0s;
+}
+.panel-quick-page .page-orange > .panel:hover,
+.panel-quick-page .page-orange > .panel:focus {
+  background-color: #d9534f;
+}
+.panel-quick-page .page-purple > .panel {
+  background-color: #9d70e2;
+  -webkit-transition: all 0.2s ease-out 0s;
+  -o-transition: all 0.2s ease-out 0s;
+  transition: all 0.2s ease-out 0s;
+}
+.panel-quick-page .page-purple > .panel:hover,
+.panel-quick-page .page-purple > .panel:focus {
+  background-color: #8046da;
+}
+.panel-quick-page .page-gray > .panel {
+  background-color: #727f9c;
+  -webkit-transition: all 0.2s ease-out 0s;
+  -o-transition: all 0.2s ease-out 0s;
+  transition: all 0.2s ease-out 0s;
+}
+.panel-quick-page .page-gray > .panel:hover,
+.panel-quick-page .page-gray > .panel:focus {
+  background-color: #5b6781;
+}
+.panel-quick-page .page-darkgray > .panel {
+  background-color: #657390;
+  -webkit-transition: all 0.2s ease-out 0s;
+  -o-transition: all 0.2s ease-out 0s;
+  transition: all 0.2s ease-out 0s;
+}
+.panel-quick-page .page-darkgray > .panel:hover,
+.panel-quick-page .page-darkgray > .panel:focus {
+  background-color: #505b72;
+}
+.panel-quick-page .panel-heading {
+  padding: 15px 20px;
+}
+.panel-quick-page .panel-title {
+  color: #fff;
+}
+.panel-quick-page .panel-body {
+  padding-top: 0;
+}
+.panel-quick-page .page-icon {
+  margin: 0;
+  color: #fff;
+  font-size: 40px;
+  height: 40px;
+  line-height: 0;
+  text-align: center;
+}
+/***** PANEL TRAFFIC *****/
+.panel-site-traffic .panel-body .panel-title {
+  color: #818da7;
+  font-size: 11px;
+  margin: 3px 0 0;
+}
+@media (max-width: 480px) {
+  .panel-site-traffic .panel-body .row > div {
+    width: 100%;
+    float: none;
+  }
+  .panel-site-traffic .panel-body .row > div:before,
+  .panel-site-traffic .panel-body .row > div:after {
+    content: " ";
+    display: table;
+  }
+  .panel-site-traffic .panel-body .row > div:after {
+    clear: both;
+  }
+  .panel-site-traffic .panel-body .row > div:before,
+  .panel-site-traffic .panel-body .row > div:after {
+    content: " ";
+    display: table;
+  }
+  .panel-site-traffic .panel-body .row > div:after {
+    clear: both;
+  }
+  .panel-site-traffic .panel-body .row > div + div {
+    margin-top: 15px;
+  }
+}
+.panel-site-traffic .panel-body h3 {
+  margin: 0 0 3px;
+  font-size: 32px;
+}
+.panel-site-traffic .panel-body .icon {
+  font-size: 48px;
+  color: #fff;
+  margin-right: 20px;
+  border-radius: 2px;
+  width: 70px;
+  line-height: 54px;
+}
+.panel-site-traffic .panel-body .ion-stats-bars {
+  background-color: #2574ab;
+  padding: 7px 18px;
+}
+.panel-site-traffic .panel-body .ion-eye {
+  background-color: #5bc0de;
+  padding: 7px 15px;
+}
+.panel-site-traffic .panel-body .ion-clock {
+  background-color: #259dab;
+  padding: 7px 14px;
+}
+.panel-site-traffic .panel-body h5 {
+  margin: 0;
+  font-weight: 300;
+}
+.pointer-icon:hover,
+.pointer-icon:focus {
+  cursor: pointer;
+  position: relative;
+}
+.station-a, .station-a:hover, .station-a:active, .station-a:visited { color: white; }

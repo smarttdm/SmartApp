@@ -1,0 +1,37 @@
+﻿<!-- MAIN CONTENT -->
+<div id="content">
+    <div>
+        <h3><i class="fa fa-home"></i>{{getWord('Home')}}</h3>
+    </div>
+    <!-- widget grid -->
+    <section id="widget-grid" widget-grid>
+        <div ng-show="dbclass" class="hidden-mobile hiddex-xs">
+            <carousel3d ng-model="slides"
+                        options="options"
+                        on-selected-click="selectedClick(index)"
+                        on-slide-change="slideChanged(index)"
+                        on-last-slide="lastSlide(index)"
+                        on-before-change="beforeChange(index)">
+                <carousel3d-slide ng-repeat="slide in slides">
+                    <figure>
+                        <img ng-src="{{slide.Image}}" alt="" />
+                        <figcaption ng-bind="slide.Caption"></figcaption>
+                    </figure>
+                </carousel3d-slide>
+            </carousel3d>
+        </div>
+        <div id="main-menu-board" class="row panel-quick-page">
+                <div class="{{menuItem.desc}}" ng-repeat="menuItem in menuItems">
+                    <div class="panel" ui-sref="{{menuItem.sref}}">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">{{menuItem.title}}</h4>
+                        </div>
+                        <div class="panel-body">
+                            <div class="page-icon"><i class="{{menuItem.icon}}"></i><b ng-show="menuItem.sref=='app.tasks.list'" class="badge bg-color-gray">0</b></div>
+                        </div>
+                    </div>
+                </div>
+        </div> <!-- row -->
+
+    </section>
+</div>

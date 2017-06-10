@@ -1,0 +1,17 @@
+﻿{
+	"activities":{
+		"last_update":"12/12/2015 9:43AM",
+		"types":[
+			{
+				"title":"Messages",
+				"name":"msgs",
+				"length":14
+			},
+			{
+				"title":"Tasks",
+				"name":"tasks",
+				"length":4
+			}
+		]
+	}
+}

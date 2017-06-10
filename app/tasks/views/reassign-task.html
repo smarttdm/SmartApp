@@ -1,0 +1,37 @@
+﻿
+
+<div id="content">
+    <!-- widget grid -->
+    <section widget-grid id="widget-grid">
+        <div class="row">
+            <article class="col-sm-12 col-md-12 col-lg-12">
+                <div jarvis-widget id="wid-id-1" data-widget-editbutton="false" data-widget-custombutton="false">
+                    <header>
+                        <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+                        <h2>{{getWord('ReassignTask')}}</h2>
+                        <div class="widget-toolbar">
+                            <span class="jarviswidget-ctrls" ng-click="$dismiss()"> <i class="fa fa-close"></i> </span>
+                        </div>
+                    </header>
+                    <div class="widget-body">
+                        <div class="text-center">
+                            <br />
+                            <select class="form-control" name="users"
+                                    ng-model="selectedUser"
+                                    ng-options="userInfo.userName as userInfo.fullName for userInfo in userInfos" required>
+                                <option value="">{{getWord("Select a person for the task")}}</option>
+                            </select>
+                            <br />
+                            <button ng-disabled="!selectedUser" type="button" class="btn btn-primary" ng-click="assignTask()">
+                                {{getWord('Submit')}}
+                            </button>
+                            <button type="button" class="btn btn-default" ng-click="closeModal()">
+                                {{getWord('Cancel')}}
+                            </button>
+                        </div>
+                    </div>
+               </div>
+            </article>
+        </div>
+    </section>
+</div>

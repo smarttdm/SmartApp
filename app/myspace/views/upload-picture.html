@@ -1,0 +1,83 @@
+﻿
+
+<div id="content">
+    <style>
+         .cropArea {
+            background: #E4E4E4;
+            overflow: hidden;
+            width:550px;
+            height:350px;
+        }
+        form .progress {
+            line-height: 15px;
+        }
+        .progress {
+            display: inline-block;
+            width: 100px;
+            border: 3px groove #CCC;
+        }
+        .progress div {
+            font-size: smaller;
+            background: orange;
+            width: 0;
+        }
+    </style>
+    <!-- widget grid -->
+    <section widget-grid id="widget-grid">
+        <div class="row">
+            <article class="col-sm-12 col-md-12 col-lg-12">
+                <div jarvis-widget id="wid-id-1" data-widget-editbutton="false" data-widget-custombutton="false">
+                    <header>
+                        <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+                        <h2>{{getWord('Change Photo')}}</h2>
+                        <div class="widget-toolbar">
+                            <span class="jarviswidget-ctrls" ng-click="$dismiss()"> <i class="fa fa-close"></i> </span>
+                        </div>
+                    </header>
+                    <div>
+                        <!-- widget content -->
+                        <form name="myForm">
+                            <table class="table table-bordered">
+                                <tbody>
+                                    <tr>
+                                        <td width="70%">
+                                            <div ngf-drop ng-model="picFile" ngf-pattern="image/*"
+                                                 class="cropArea">
+                                                <img-crop image="picFile  | ngfDataUrl" area-type="square"
+                                                          area-min-size ="50"
+                                                          result-image-size="50"
+                                                          result-image="croppedDataUrl" ng-init="croppedDataUrl=''">
+                                                </img-crop>
+                                            </div>
+                                        </td>
+                                        <td width="30%" valign="middle" align="center">
+                                            <img ng-src="{{croppedDataUrl}}" />
+                                        </td>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td class="text-center" width="70%">
+                                            <button type="button" class="btn btn-primary" ngf-select ng-model="picFile" accept="image/*">
+                                                {{getWord("Select Picture")}}
+                                            </button>
+                                        </td>
+                                        <td class="text-center" width="30%">
+                                            <button type="button" class="btn btn-primary" ng-click="upload(croppedDataUrl, picFile.name)">{{getWord("Submit")}}</button>
+                                            <button type="button" class="btn btn-default" ng-click="closeModal()">{{getWord("Cancel")}}</button>
+                                            <br /><br />
+                                            <span class="progress" ng-show="progress >= 0">
+                                                <div style="width:{{progress}}%" ng-bind="progress + '%'"></div>
+                                            </span>
+                                            <span class="text-success" ng-show="result">{{getWord("Upload Completed")}}</span>
+                                            <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </form>
+                    </div>
+               </div>
+            </article>
+        </div>
+    </section>
+</div>

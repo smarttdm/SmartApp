@@ -1,0 +1,94 @@
+﻿
+
+<div id="content" onload="checkFileAPI();">
+    <style>
+        .st-selected{
+            color:orangered ;
+        }
+    </style>
+    <!-- widget grid -->
+    <section widget-grid id="widget-grid">
+        <div class="row">
+            <article class="col-sm-12 col-md-12 col-lg-12">
+                <div jarvis-widget id="live-feeds-widget" data-widget-togglebutton="false" data-widget-editbutton="false"
+                     data-widget-fullscreenbutton="false" data-widget-colorbutton="false" data-widget-deletebutton="false">
+                    <!-- widget options:
+                    usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+                    data-widget-colorbutton="false"
+                    data-widget-editbutton="false"
+                    data-widget-togglebutton="false"
+                    data-widget-deletebutton="false"
+                    data-widget-fullscreenbutton="false"
+                    data-widget-custombutton="false"
+                    data-widget-collapsed="true"
+                    data-widget-sortable="false"
+
+                    -->
+                    <header>
+                        <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+                        <h2>
+                            {{getWord("Time Serries Training Data")}}
+                        </h2>
+                        <div class="widget-toolbar">
+                            <span class="jarviswidget-ctrls" ng-click="closeModal()"> <i class="fa fa-close"></i> </span>
+                        </div>
+                    </header>
+
+                    <!-- widget div-->
+                    <div class="no-padding">
+                        <div class="widget-body">
+                            <form class="smart-form">
+                                <fieldset>
+                                    <section>
+                                        <label class="label">{{getWord('Append to a file')}}</label>
+                                        <div class="input input-file">
+                                            <span class="button">
+                                                <input type="file" filelist-bind id="file" name="files" accept=".txt"
+                                                       onchange="this.parentNode.nextSibling.value = this.value">{{getWord('Browse')}}
+                                            </span><input type="text" placeholder="{{getWord('Select File')}}" readonly="">
+                                        </div>
+                                    </section>
+                                </fieldset>
+                            </form>
+                            <article class="col-sm-12">
+                                <div jarvis-widget id="normal-table-widget" data-widget-color="blueDark" data-widget-editbutton="false" data-widget-deletebutton="false">
+                                    <header>
+                                        <span class="widget-icon"> <i class="fa fa-table"></i> </span>
+
+                                        <h2>{{getWord('Time Series Set')}}</h2>
+                                    </header>
+                                    <div style="overflow-x:auto;">
+                                        <table st-table="rowCollection" class="table table-striped table-bordered table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th class="col-sm-1">{{getWord('Time Series ID')}}</th>
+                                                    <th class="col-sm-1">{{getWord('Frequency')}}</th>
+                                                    <th class="col-sm-10">{{getWord('Data')}}</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr st-select-row="row" st-select-mode="multiple" ng-repeat="row in rowCollection track by $index">
+                                                    <td class="col-sm-1">{{row.id}}</td>
+                                                    <td class="col-sm-1">{{row.frequency}}</td>
+                                                    <td class="col-sm-10">{{row.data}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </article>
+                            <!-- end content -->
+                        </div>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button class="btn btn-primary" ng-click="downloadFile()" button-spinner="isLoading">{{getWord("Download")}}</button>&nbsp;
+                    <button class="btn btn-warning" ng-click="deleteRows()">{{getWord("Delete")}}</button>&nbsp;
+                    <button class="btn btn-danger" ng-click="clearRows()">{{getWord("Clear")}}</button>&nbsp;
+                    <button class="btn btn-default" ng-click="closeModal()">{{getWord("Cancel")}}</button>
+                </div>
+            </article>
+        </div>
+    </section>
+</div>

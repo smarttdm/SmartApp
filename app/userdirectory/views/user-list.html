@@ -1,0 +1,139 @@
+﻿<div id="content">
+    <div class="row">
+        <big-breadcrumbs items="[getWord('Home'), getWord('User Directory')]" class="col-xs-12 col-sm-12"></big-breadcrumbs>
+    </div>
+    <!--
+        The ID "widget-grid" will start to initialize all widgets below
+        You do not need to use widgets if you dont want to. Simply remove
+        the <section></section> and you can use wells or panels instead
+        -->
+    <!-- widget grid -->
+    <section id="widget-grid" data-widget-grid>
+        <!-- row -->
+        <div class="row">
+            <!-- NEW WIDGET START -->
+            <article class="col-xs-12 col-sm-9">
+                <!-- Widget ID (each widget will need unique ID)-->
+                <div class="well" id="widget-title-widget" data-jarvis-widget>
+                    <!-- widget options:
+                        usage: <div data-jarvis-widget id="wid-id-0" data-widget-editbutton="false">
+                        data-widget-colorbutton="false"
+                        data-widget-editbutton="false"
+                        data-widget-togglebutton="false"
+                        data-widget-deletebutton="false"
+                        data-widget-fullscreenbutton="false"
+                        data-widget-custombutton="false"
+                        data-widget-collapsed="true"
+                        data-widget-sortable="false"
+                    -->
+                    <header>
+                        <span class="widget-icon"> <i class="fa fa-comments"></i> </span>
+
+                        <h2>Widget Title </h2>
+                    </header>
+                    <!-- widget div-->
+                    <div>
+                        <!-- widget content -->
+                        <div class="widget-body no-padding" data-sparkline-container>
+
+                            <table datatable-basic data-table-options="tableOptions"
+                                   class="display projects-table table table-striped table-bordered table-hover"
+                                   cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>{{getWord("Full Name")}}</th>
+                                        <th>
+                                            <i class="fa fa-fw fa-tag text-muted"></i>
+                                            {{getWord("ID")}}
+                                        </th>
+                                        <th>
+                                            <i class="fa fa-fw fa-phone text-muted"></i>
+                                            {{getWord("Phone Number")}}
+                                        </th>
+                                        <th>
+                                            <i class="fa fa-fw fa-fa-envelope text-muted"></i>
+                                            {{getWord("Email")}}
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <caption class="smart-datatable-child-format" data-child-control="td.details-control">
+                                    <table cellpadding="5" cellspacing="0" border="0"
+                                           class="table table-hover table-condensed">
+                                        <tr>
+                                            <td>{{getWord("Picture")}}Picture:</td>
+                                            <td>
+                                                <div>
+                                                    <img ng-src="{{d.Picture}}" alt="{{d.FullName}}">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width:100px">{{getWord("Full Name")}}Full Name:</td>
+                                            <td ng-bind-html="d.FullName"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>{{getWord("ID")}}ID:</td>
+                                            <td ng-bind-html="d.ID">}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>{{getWord("Phone Number")}}Phone Number:</td>
+                                            <td ng-bind-html="d.PhoneNumber"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>{{getWord("Email")}}Email:</td>
+                                            <td><a ng-href="mailto:{{d.Email}}">{{d.Email}}</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>{{getWord("Divsion")}}Divsion:</td>
+                                            <td ng-bind-html="d.Division"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>{{getWord("Address")}}Address:</td>
+                                            <td ng-bind-html="d.Address"></td>
+                                        </tr>
+                                    </table>
+                                </caption>
+                            </table>
+                        </div>
+                        <!-- end widget content -->
+                    </div>
+                    <!-- end widget div -->
+                </div>
+                <!-- end widget -->
+            </article>
+            <!-- WIDGET END -->
+            <div class="col-sm-3">
+                <!-- /well -->
+                <div id="unitTreeContainer" class="well padding-10">
+                    <h5 class="margin-top-0"><i class="fa fa-building"></i> {{getWord("Units")}}</h5>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <!-- content goes here -->
+                            <div class="tree smart-form">
+                                <ul data-smart-treeview data-items="unitTree" role="tree"></ul>
+                            </div>
+                            <!-- end content -->
+                        </div>
+                    </div>
+                </div>
+                <!-- /well -->
+                <div class="well padding-10">
+                    <h5 class="margin-top-0"><i class="fa fa-tag"></i> {{getWord("Roles")}}:</h5>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <ul class="list-group no-margin">
+                                <li ng-class="role.obj_id === functionObjId? 'list-group-item list-group-item-info' : 'list-group-item'" ng-repeat="role in functions">
+                                    <a ng-click="getFunctionUsers(role.obj_id)" >{{role.Text}} </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- /well -->
+            </div>
+        </div>
+        <!-- end row -->
+    </section>
+    <!-- end widget grid -->
+</div>

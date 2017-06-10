@@ -1,0 +1,152 @@
+﻿<div jarvis-widget id="live-feeds-widget" data-widget-togglebutton="false" data-widget-editbutton="false"
+     data-widget-fullscreenbutton="false" data-widget-colorbutton="false" data-widget-deletebutton="false">
+<!-- widget options:
+usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+data-widget-colorbutton="false"
+data-widget-editbutton="false"
+data-widget-togglebutton="false"
+data-widget-deletebutton="false"
+data-widget-fullscreenbutton="false"
+data-widget-custombutton="false"
+data-widget-collapsed="true"
+data-widget-sortable="false"
+
+-->
+<header>
+    <span class="widget-icon"> <i class="glyphicon glyphicon-stats txt-color-darken"></i> </span>
+
+    <h2>{{CurrentStationName}}</h2>
+
+    <ul class="nav nav-tabs pull-right in" id="myTab">
+        <li ng-class="showMonitor? 'active' : null" ng-show="showMonitor">
+            <a data-toggle="tab" href="#s1"><i class="fa fa-clock-o"></i> <span class="hidden-mobile hidden-tablet">{{getWord("LiveData")}}</span></a>
+        </li>
+
+        <li ng-class="!showMonitor? 'active' : null">
+            <a data-toggle="tab" href="#s2"><i class="fa fa-cog"></i> <span class="hidden-mobile hidden-tablet">{{getWord("StationConfig")}}</span></a>
+        </li>
+
+        <li>
+            <a data-toggle="tab" href="#s3"><i class="fa fa-calendar"></i> <span class="hidden-mobile hidden-tablet">{{getWord("Scheduler")}}</span></a>
+        </li>
+    </ul>
+
+</header>
+
+<!-- widget div-->
+<div class="no-padding">
+
+    <div class="widget-body">
+        <!-- content -->
+        <div id="myTabContent" class="tab-content">
+            <div ng-class="showMonitor? 'tab-pane fade active in padding-10 no-padding-bottom' : 'tab-pane fade'" id="s1" ng-show="showMonitor">
+                <div class="row no-space">
+                    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+						<span class="demo-liveupdate-1"> <span
+                                class="onoffswitch-title">{{getWord("LiveSwitch")}}</span> <span
+                                class="onoffswitch">
+								<input type="checkbox" name="start_interval" ng-model="autoUpdate"
+                                        class="onoffswitch-checkbox" id="start_interval">
+								<label class="onoffswitch-label" for="start_interval">
+                                    <span class="onoffswitch-inner"
+                                            data-swchon-text="{{getWord('SwitchOn')}}"
+                                            data-swchoff-text="{{getWord('SwitchOff')}}"></span>
+                                    <span class="onoffswitch-switch"></span>
+                                </label> </span> </span>
+
+                        <div id="updating-chart" class="chart-large txt-color-blue" flot-basic flot-data="liveStats" flot-options="liveStatsOptions"></div>
+
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 show-stats">
+
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-6 col-md-12 col-lg-12"><span class="text"> {{settings.ProgressName1}} :<span
+                                    >{{settings.ProgressValue1}} {{settings.ProgressUnit1}}</span> </span>
+
+                                <div class="progress">
+                                    <div class="progress-bar bg-color-blueDark" data-smart-progressbar aria-valuenow="{{ settings.ProgressPercent1 }}"  ng-style="{width : ( settings.ProgressPercent1 + '%' ) }"></div>
+                                </div>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-12 col-lg-12"><span class="text"> {{settings.ProgressName2}} : <span
+                                    >{{settings.ProgressValue2}} {{settings.ProgressUnit2}}</span> </span>
+
+                                <div class="progress">
+                                    <div class="progress-bar bg-color-blue" data-smart-progressbar aria-valuenow="{{ settings.ProgressPercent2 }}" ng-style="{width : ( settings.ProgressPercent2 + '%' ) }"></div>
+                                </div>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-12 col-lg-12"><span class="text"> {{settings.ProgressName3}} : <span
+                                    >{{settings.ProgressValue3}} {{settings.ProgressUnit3}}</span> </span>
+
+                                <div class="progress">
+                                    <div class="progress-bar bg-color-blue" data-smart-progressbar aria-valuenow="{{ settings.ProgressPercent3 }}" ng-style="{width : ( settings.ProgressPercent3 + '%' ) }"></div>
+                                </div>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-12 col-lg-12"><span class="text"> {{settings.ProgressName4}} : <span
+                                    >{{settings.ProgressValue4}} {{settings.ProgressUnit4}}</span> </span>
+
+                                <div class="progress">
+                                    <div class="progress-bar bg-color-greenLight" data-smart-progressbar ng-style="{width : ( settings.ProgressPercent4 + '%' ) }">></div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="show-stat-microcharts" data-sparkline-container data-easy-pie-chart-container>
+                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+
+                        <div class="easy-pie-chart txt-color-orangeDark" data-percent="0" data-pie-size="50" data-ng-model="PiePercent1">
+                            <span class="percent percent-sign">{{settings.PieValue1}}</span>
+                        </div>
+                        <span class="easy-pie-title"> {{settings.PieName1}} <i class="fa fa-caret-up icon-color-bad"></i> </span>
+                    </div>
+                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                        <div class="easy-pie-chart txt-color-greenLight" data-percent="0" data-pie-size="50" data-ng-model="PiePercent2">
+                            <span class="percent percent-sign">{{settings.PieValue2}} </span>
+                        </div>
+                        <span class="easy-pie-title"> {{settings.PieName2}} <i class="fa fa-caret-down icon-color-good"></i></span>
+                    </div>
+                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                        <div class="easy-pie-chart txt-color-blue" data-percent="0" data-pie-size="50" data-ng-model="PiePercent3">
+                            <span class="percent percent-sign">{{settings.PieValue3}} </span>
+                        </div>
+                        <span class="easy-pie-title"> {{settings.PieName3}} <i class="fa fa-caret-up icon-color-good"></i></span>
+                    </div>
+                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                        <div class="easy-pie-chart txt-color-darken" data-percent="0" data-pie-size="50" data-ng-model="PiePercent4">
+                            <span class="percent degree-sign">{{settings.PieValue4}} <i class="fa fa-caret-up"></i></span>
+                        </div>
+                        <span class="easy-pie-title"> {{settings.PieName4}} <i
+                                class="fa fa-caret-down icon-color-good"></i></span>
+                    </div>
+                </div>
+
+            </div>
+            <!-- end s1 tab pane -->
+
+            <div ng-class="!showMonitor? 'tab-pane fade active in padding-10 no-padding-bottom' : 'tab-pane fade'" id="s2">
+                <div class="padding-10">
+                    <form name="ebaasform" novalidate">
+                        <ebaas-form-template dbschema="dbschema" dbclass="dbclass" oid="oid" template="template" formattribute="formAttribute" readonly="true"></ebaas-form-template>
+                    </form>
+                </div>
+            </div>
+            <!-- end s2 tab pane -->
+
+            <div ng-class="'tab-pane fade'" id="s3">
+                <div class="padding-10">
+                    <div dx-scheduler="schedulerOptions"></div>
+                </div>
+            </div>
+            <!-- end s3 tab pane -->
+        </div>
+
+        <!-- end content -->
+    </div>
+
+</div>
+<!-- end widget div -->
+</div>

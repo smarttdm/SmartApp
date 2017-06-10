@@ -1,0 +1,54 @@
+﻿<!-- MAIN CONTENT -->
+<div id="content">
+
+    <div class="row">
+        <big-breadcrumbs items="[getWord('Home'), getWord('Tables')]"
+                         class="col-xs-12 col-sm-12"></big-breadcrumbs>
+    </div>
+    <!-- widget grid -->
+    <section widget-grid id="widget-grid">
+        <div class="row">
+            <article class="col-sm-12">
+                <div jarvis-widget id="normal-table-widget" data-widget-color="blueDark"
+                     data-widget-togglebutton="false" data-widget-editbutton="false"
+                    data-widget-fullscreenbutton="true" data-widget-colorbutton="false" data-widget-deletebutton="false">
+                    <header>
+                        <span class="widget-icon"> <i class="fa fa-table"></i> </span>
+                        <h2>{{caption}}</h2>
+                        <div class="widget-toolbar">
+                            <a class="btn btn-sm btn-success" ng-show="add" ng-click="openModal()">
+                                <i class="glyphicon glyphicon-plus">
+                                </i> {{getWord('Add')}}
+                            </a>
+                            <a ng-show="exportData" class="btn btn-sm btn-primary" ng-click="export()">
+                                <i  class="fa fa-file-excel-o">
+                                </i> {{getWord('Export')}}
+                            </a>
+                            <a ng-show="importData" class="btn btn-sm btn-primary" ng-click="import()">
+                                <i class="fa fa-upload">
+                                </i> {{getWord('Import')}}
+                            </a>
+                            <a ng-show="hasDataCart" class="btn btn-sm btn-success" ng-click="openCart()">
+                                <i class="fa fa-shopping-cart">
+                                </i> {{getWord('Data Cart')}}
+                                &nbsp;<span class="badge">{{getCartItemCount()}}</span>
+                            </a>
+                        </div>
+                    </header>
+                    <div id="gridContainer" style="margin: 0 auto" dx-data-grid="dataGridSettings">
+                        <div data-options="{dxTemplate: {name: 'detail'}}">
+                            <div class="btn-group" ng-init="commands = $parent.GetCommands(rowIndex, data)">
+                                <span ng-repeat="cmd in commands">
+                                    <buton ng-if="!cmd.track" ng-click="cmd.onItemClick(cmd.text)" class="{{cmd.css}}">
+                                        <i class="{{cmd.icon}}"></i><br>{{cmd.text}}
+                                    </buton><span ng-if="!cmd.track">&nbsp;&nbsp;</span>
+                                    <span ng-if="cmd.track" class='onoffswitch'><input type='checkbox' name='trackswitch' ng-change="cmd.onItemClick()" class='onoffswitch-checkbox' id='{{cmd.text}}' ng-model="cmd.trackStatus"><label class='onoffswitch-label' for='{{cmd.text}}'><span class='onoffswitch-inner' data-swchon-text='ON' data-swchoff-text='OFF'></span><span class='onoffswitch-switch'></span></label>{{cmd.text}}</span>
+                                </span>
+                            </div>
+                        </div>
+                   </div>
+                </div>
+            </article>
+        </div>
+    </section>
+</div>

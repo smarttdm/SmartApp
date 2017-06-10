@@ -1,0 +1,11 @@
+﻿
+
+<form name="ebaasform" novalidate>
+    <div data-ng-hide="message == ''" ng-class="getFormCssClasses(ebaasform)">
+        {{message}}
+    </div>
+    <ebaas-form-template dbschema="ctrl.dbschema" dbclass="ctrl.dbclass" oid="oid" template="ctrl.template"></ebaas-form-template>
+    <div data-ng-hide="message == ''" ng-class="getFormCssClasses(ebaasform)">
+        {{message}}
+    </div>
+</form>

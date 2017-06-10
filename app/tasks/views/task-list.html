@@ -1,0 +1,55 @@
+﻿<!-- MAIN CONTENT -->
+<div id="content">
+
+    <div class="row">
+        <big-breadcrumbs items="[getWord('Home'), getWord('MyTasks')]"
+                         class="col-xs-12 col-sm-12"></big-breadcrumbs>
+    </div>
+    <!-- widget grid -->
+    <section widget-grid id="widget-grid">
+        <div class="row">
+            <article class="col-sm-12">
+                <div jarvis-widget id="normal-table-widget" data-widget-color="blueDark" data-widget-editbutton="false" data-widget-deletebutton="false">
+                    <header>
+                        <span class="widget-icon"> <i class="fa fa-table"></i> </span>
+
+                        <h2>{{getWord('MyTasks')}}</h2>
+                    </header>
+                    <div>
+                        <table st-table="rowCollection" class="table table-striped table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th st-sort="TaskID">{{getWord('TaskID')}}</th>
+                                    <th st-sort="Subject">{{getWord('Subject')}}</th>
+                                    <th st-sort="Description">{{getWord('Description')}}</th>
+                                    <th st-sort="CreatedTime">{{getWord('CreatedTime')}}</th>
+                                    <th>{{getWord('ReassignTask')}}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="row in rowCollection">
+                                    <td ui-sref="app.tasks.form({schema: getDBSchema(), taskid: row.taskId})">{{row.taskId}}</td>
+                                    <td ui-sref="app.tasks.form({schema: getDBSchema(), taskid: row.taskId})">{{row.subject}}</td>
+                                    <td ui-sref="app.tasks.form({schema: getDBSchema(), taskid: row.taskId})">{{row.description}}</td>
+                                    <td ui-sref="app.tasks.form({schema: getDBSchema(), taskid: row.taskId})">{{row.createTime | date : 'shortTime'}}</td>
+                                    <td align="center" ui-sref=".reassign({schema: getDBSchema(), taskid: row.taskId})"><i class="fa fa-user"></i></td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td class="text-center" st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="numOfPages" colspan="5"></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center" colspan="5">
+                                        <button class="btn btn-primary" ng-click="RefreshTasks()"> {{getWord("Refresh")}} </button>
+                                        <button class="btn btn-primary" ng-click="OpenSetSubstitute()"> {{getWord("Set Task Substitution")}} </button>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+</div>

@@ -1,0 +1,32 @@
+﻿<div class="padding-10">
+    <div id="itemTreeModalCtrl" class="jarviswidget" data-widget-editbutton="false" data-widget-fullscreenbutton="false" data-widget-togglebutton="false" data-widget-colorbutton="false" data-widget-deletebutton="false">
+        <header>
+            <h2> {{getWord('itemCategory')}} </h2>
+            <div class="widget-toolbar">
+                <span class="jarviswidget-ctrls" ng-click="$dismiss()"> <i class="fa fa-close"></i> </span>
+            </div>
+        </header>
+
+        <!-- widget div-->
+        <div>
+            <div class="widget-body">
+                <div class="tree smart-form">
+                    <ul data-smart-treeview data-items="itemTree" role="tree"></ul>
+                </div>
+            </div>
+        </div>
+        <!-- end widget div -->
+        <div class="padding-10">
+            <footer>
+                <div align="right">
+                    <button type="button" class="btn btn-primary" button-spinner="loading" ng-disabled="loading" ng-click="ok()">
+                        {{getWord('OK')}}
+                    </button>
+                    <button type="button" class="btn btn-default" ng-click="cancel()">
+                        {{getWord('Cancel')}}
+                    </button>
+                </div>
+            </footer>
+        </div>
+    </div>
+</div>

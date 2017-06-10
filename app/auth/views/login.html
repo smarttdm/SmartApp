@@ -1,0 +1,85 @@
+<header id="header"  class="animated fadeInDown" >
+
+    <div id="logo-group">
+        <span id="logo"> <img src="styles/img/logo.png" alt="TDM"> </span>
+    </div>
+
+    <span id="extr-page-header-space"> <span class="hidden-mobile hiddex-xs">{{getWord("NeedAccount")}}</span> <a
+           ui-sref="register" class="btn btn-danger">{{getWord("Register")}}</a> </span>
+
+</header>
+<div id="main" role="main"  class="animated fadeInDown" >
+
+    <div id="content" class="container">
+        <div class="row">
+            <div class="hidden-xs hidden-sm col-md-4 col-lg-4">
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                <div class="well no-padding" ng-controller="LoginController">
+                    <form id="login-form" class="smart-form client-form" data-smart-validate-form>
+                        <header>
+                            {{getWord("SignIn")}}
+                        </header>
+                        <fieldset>
+                            <section>
+                                <label class="label">{{getWord("UserName")}}</label>
+                                <label class="input">
+                                    <i class="icon-append fa fa-user"></i>
+                                    <input type="text" name="username" 
+                                            data-ng-model="loginData.userName"
+                                            data-smart-validate-input
+                                            autofocus
+                                            required
+                                            data-message="Please enter your login name" />
+                                    <b class="tooltip tooltip-top-right">
+                                        <i class="fa fa-user txt-color-teal"></i>
+                                        {{getWord("UserNameTip")}}
+                                    </b>
+                                </label>
+                            </section>
+                            <section>
+                                <label class="label">{{getWord("Password")}}</label>
+                                <label class="input">
+                                    <i class="icon-append fa fa-lock"></i>
+                                    <input type="password" name="password"
+                                            data-ng-model="loginData.password"
+                                            data-smart-validate-input
+                                            data-required
+                                            data-minlength="3"
+                                            data-maxnlength="20"
+                                            data-message="Please enter your password">
+                                    <b class="tooltip tooltip-top-right">
+                                        <i class="fa fa-lock txt-color-teal"></i>{{getWord("PasswordTip")}}
+                                    </b>
+                                </label>
+                                <!--
+                                <div class="note">
+                                    <a ui-sref="forgotPassword">{{getWord("ForgotPassword")}}</a>
+                                </div>
+                                 -->
+                            </section>
+                            <!--
+                            <section>
+                                <label class="checkbox">
+                                    <input type="checkbox" name="remember" checked>
+                                    <i></i>Stay signed in
+                                </label>
+                            </section>
+                            -->
+                        </fieldset>
+                        <div data-ng-hide="message == ''" class="alert alert-danger">
+                            {{message}}
+                        </div>
+                        <footer>
+                            <button type="submit" class="btn btn-primary" data-ng-click="login()">
+                                {{getWord("SignIn")}}
+                            </button>
+                        </footer>
+                    </form>
+                </div>
+            </div>
+            <div class="hidden-xs hidden-sm col-md-4 col-lg-4">
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,81 @@
+﻿<div ng-cloak>
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <ul class="list-group">
+                <li class="list-group-item list-group-item-info active">
+                    <div ng-if="!vm.readonly" class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-10 col-xs-8">{{vm.getWord("Name")}}</div>
+                        <div class="col-lg-2 col-md-2 hidden-sm hidden-xs">{{vm.getWord("Size")}}</div>
+                        <div class="col-lg-2 col-md-2 hidden-sm hidden-xs">{{vm.getWord("CreatedOn")}}</div>
+                        <div class="col-lg-2 col-md-2 hidden-sm hidden-xs">{{vm.getWord("ModifiedOn")}}</div>
+                        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-2">{{vm.getWord("Download")}}</div>
+                        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-2">{{vm.getWord("Delete")}}</div>
+                    </div>
+                    <div ng-if="vm.readonly" class="row">
+                        <div class="col-lg-5 col-md-5 col-sm-11 col-xs-10">{{vm.getWord("Name")}}</div>
+                        <div class="col-lg-2 col-md-2 hidden-sm hidden-xs">{{vm.getWord("Size")}}</div>
+                        <div class="col-lg-2 col-md-2 hidden-sm hidden-xs">{{vm.getWord("CreatedOn")}}</div>
+                        <div class="col-lg-2 col-md-2 hidden-sm hidden-xs">{{vm.getWord("ModifiedOn")}}</div>
+                        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-2">{{vm.getWord("Download")}}</div>
+                    </div>
+                </li>
+                <li class="list-group-item" ng-show="vm.files.length === 0" ng-mouseenter="vm.setPreviewFile()">No files</li>
+                <li ng-repeat="file in vm.files" class="list-group-item" ng-mouseenter="vm.setPreviewFile(file)" ng-mouseleave="vm.setPreviewFile()">
+                    <div ng-if="!vm.readonly" class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-10 col-xs-8 wraptext">{{file.name}}</div>
+                        <div class="col-lg-2 col-md-2 hidden-sm hidden-xs">{{file.size}}</div>
+                        <div class="col-lg-2 col-md-2 hidden-sm hidden-xs">{{file.created | date: short}}</div>
+                        <div class="col-lg-2 col-md-2 hidden-sm hidden-xs">{{file.modified | date: short}}</div>
+                        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
+                            <button type="button" class="btn btn-xs btn-info" ng-click="vm.download(file)">
+                                <span class="fa fa-download"></span>
+                            </button>
+                        </div>
+                        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
+                            <button type="button" class="btn btn-xs btn-danger" ng-click="vm.remove(file)">
+                                <span class="fa  fa-times"></span>
+                            </button>
+                        </div>
+                    </div>
+                    <div ng-if="vm.readonly" class="row">
+                        <div class="col-lg-5 col-md-5 col-sm-11 col-xs-10 wraptext">{{file.name}}</div>
+                        <div class="col-lg-2 col-md-2 hidden-sm hidden-xs">{{file.size}}</div>
+                        <div class="col-lg-2 col-md-2 hidden-sm hidden-xs">{{file.created | date: short}}</div>
+                        <div class="col-lg-2 col-md-2 hidden-sm hidden-xs">{{file.modified | date: short}}</div>
+                        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
+                            <button type="button" class="btn btn-xs btn-info" ng-click="vm.download(file)">
+                                <span class="fa fa-download"></span>
+                            </button>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <!--<eg-file-uploader></eg-file-uploader>-->
+        </div>                 
+    </div>
+    <div ng-show="!vm.readonly" class="row">
+        <div align="center">
+            <ul class="list-inline font-xs">
+                <li>
+                    <a ng-click="setShowUpload(true)" ng-class="showUpload === true? 'text-muted' : 'text-primary'">{{vm.getWord("Show Upload Block")}}</a>
+                </li>
+                <li>
+                    <a ng-click="setShowUpload(false)" ng-class="showUpload === true? 'text-primary': 'text-muted'">{{vm.getWord("Hide Upload Block")}}</a>
+                </li>
+            </ul>
+        </div>
+        <div ng-show="showUpload" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <form action="" class="dropzone" dropzone="" id="dropzone" enctype="multipart/form-data">
+               
+            </form>
+            <div class="pull-right padding-10">
+                <button class="btn btn-sucess" ng-click="uploadFile()">{{vm.getWord("Upload")}}</button>
+                <button class="btn btn-danger" ng-click="reset()">{{vm.getWord("Reset")}}</button>
+            </div>
+            <!--<eg-app-status></eg-app-status>-->
+        </div>
+    </div>
+    <script type="text/javascript">
+        Dropzone.autoDiscover = false;
+    </script>
+</div>

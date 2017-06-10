@@ -1,0 +1,48 @@
+<div id="content">
+    <div class="row">
+        <big-breadcrumbs items="[getWord('Home'), getWord('Form Designer')]"
+                         class="col-xs-12 col-sm-12"></big-breadcrumbs>
+    </div>
+	<!-- widget grid -->
+	<section id="widget-grid" data-widget-grid>
+		<!-- row -->
+		<div class="row">
+			<!-- NEW WIDGET START -->
+			<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<!-- Widget ID (each widget will need unique ID)-->
+				<div id="ck-editor-full-version-widget" data-widget-deletebutton="false" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-togglebutton="false" data-widget-fullscreenbutton="false" data-widget-sortable="false" data-widget-color="darken" data-jarvis-widget>
+					<!-- widget options:
+						usage: <div data-jarvis-widget id="wid-id-0" data-widget-editbutton="false">
+						data-widget-colorbutton="false"	
+						data-widget-editbutton="false"
+						data-widget-togglebutton="false"
+						data-widget-deletebutton="false"
+						data-widget-fullscreenbutton="false"
+						data-widget-custombutton="false"
+						data-widget-collapsed="true" 
+						data-widget-sortable="false"
+					-->
+					<header>
+						<span class="widget-icon"> <i class="fa fa-pencil"></i> </span>
+						<h2>{{getTitle()}} </h2>				
+					</header>
+					<!-- widget div-->
+					<div>
+						<!-- widget content -->
+						<div class="widget-body no-padding">
+                            <form id="formeditor">
+                                <textarea  ng-model="content" data-ck-editor></textarea>
+                            </form>					
+						</div>
+						<!-- end widget content -->
+					</div>
+					<!-- end widget div -->
+				</div>
+				<!-- end widget -->
+			</article>
+			<!-- WIDGET END -->
+		</div>
+		<!-- end row -->
+	</section>
+	<!-- end widget grid -->
+</div>

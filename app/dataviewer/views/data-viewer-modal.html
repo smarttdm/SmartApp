@@ -1,0 +1,196 @@
+﻿
+
+<div id="content">
+    <!-- widget grid -->
+    <section widget-grid id="widget-grid">
+        <div class="row">
+            <article class="col-sm-12 col-md-12 col-lg-12">
+                <div jarvis-widget id="live-feeds-widget" data-widget-togglebutton="false" data-widget-editbutton="false"
+                     data-widget-fullscreenbutton="false" data-widget-colorbutton="false" data-widget-deletebutton="false">
+                    <!-- widget options:
+                    usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+                    data-widget-colorbutton="false"
+                    data-widget-editbutton="false"
+                    data-widget-togglebutton="false"
+                    data-widget-deletebutton="false"
+                    data-widget-fullscreenbutton="false"
+                    data-widget-custombutton="false"
+                    data-widget-collapsed="true"
+                    data-widget-sortable="false"
+
+                    -->
+                    <header>
+                        <span class="widget-icon" ng-click="$dismiss()"> <i class="fa fa-close"></i> </span>
+
+                        <h2>
+                            {{getWord("Test Item Data")}}
+                        </h2>
+
+                        <ul class="nav nav-tabs pull-right in" id="myTab">
+                            <li class="active">
+                                <a data-toggle="tab" href="#s1" ><i class="fa fa-table"></i> <span class="hidden-mobile hidden-tablet">{{getWord("Result Data")}}</span></a>
+                            </li> 
+                            <li>
+                                <a data-toggle="tab" href="#s2"><i class="fa fa-bar-chart-o"></i> <span class="hidden-mobile hidden-tablet">{{getWord("Result Chart")}}</span></a>
+                            </li>
+
+                            <li>
+                                <a data-toggle="tab" href="#s3"><i class="fa fa-folder-open-o"></i> <span class="hidden-mobile hidden-tablet">{{getWord("Orignal Data")}}</span></a>
+                            </li>
+                        </ul>
+                    </header>
+
+                    <!-- widget div-->
+                    <div class="no-padding">
+                        <div class="widget-body">
+                            <!-- content -->
+                            <div id="myTabContent" class="tab-content">
+                                <div class="tab-pane fade active in padding-10 no-padding-bottom" id="s1">
+                                    <div class="padding-10">
+                                        <form id="categoryForm" class="form-horizontal">
+                                            <fieldset>
+                                                <div class="form-group">
+                                                    <div class="col-xs-2 col-lg-4">
+                                                        <button class="btn btn-primary" ng-disabled="!canExport()" ng-click="ExportCSV()" button-spinner="isLoading">{{getWord("Export")}}</button>
+
+                                                        <button class="btn btn-warning" ng-click="RefreshData()" button-spinner="isLoading">{{getWord("Refresh")}}</button>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                        </form>
+                                    </div>
+                                    <div id="exportable" style="overflow-x:auto;">
+                                        <table st-pipe="callServer" st-table="displayed" class="table table-striped table-bordered table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th ng-repeat="column in columns">{{column}}</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody ng-show="!isLoading">
+                                                <tr ng-show="displayed.length > 0" ng-repeat="row in displayed">
+                                                    <td ng-repeat="column in columns">{{row[column]}}</td>
+                                                </tr>
+                                                <tr ng-show="displayed.length === 0">
+                                                    <td colspan="{{columns.length}}" class="text-center">{{getWord("NoItems")}}</td>
+                                                </tr>
+                                            </tbody>
+                                            <tbody ng-show="isLoading">
+                                                <tr>
+                                                    <td colspan="{{columns.length}}" class="text-center">{{getWord("Loading")}}</td>
+                                                </tr>
+                                            </tbody>
+                                            <tfoot>
+                                                <tr>
+                                                    <td class="text-center" ng-show="displayed.length > 0" st-template="app/dataviewer/views/pagination.html" st-pagination="" st-items-by-page="20" colspan="{{columns.length}}"></td>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                </div>
+                                <!-- end s1 tab pane -->
+
+                                <div class="tab-pane fade" id="s2">
+                                    <div ng-show="displayed.length > 0">
+                                        <div class="padding-10 no-padding-bottom">
+                                            <form id="dataColumnForm" class="form-horizontal">
+                                                <fieldset>
+                                                    <div style="align-content:center" class="form-group">
+                                                        <label class="col-xs-2 col-lg-1 control-label">{{getWord("Column Name")}}</label>
+                                                        <div class="col-xs-4 col-lg-3 selectContainer">
+                                                            <select class="form-control" name="dataColumns"
+                                                                    ng-model="currentColumn"
+                                                                    ng-options="column for column in excludeIndexColumns"
+                                                                    ng-change="displayChart()"></select>
+                                                        </div>
+                                                        <label class="col-xs-2 col-lg-1 control-label">{{getWord("Frequency")}}</label>
+                                                        <div class="col-xs-4 col-lg-3 selectContainer">
+                                                            <select class="form-control" name="frequency"
+                                                                    ng-model="currentFrequency"
+                                                                    ng-options="frequency.id as frequency.name for frequency in frequencies"
+                                                                    ng-change="displayChart()"></select>
+                                                        </div>
+                                                        <label class="col-xs-2 col-lg-1 control-label">{{getWord("Value Operation")}}</label>
+                                                        <div class="col-xs-4 col-lg-3 selectContainer">
+                                                            <select class="form-control" name="operation"
+                                                                    ng-model="currentOperation"
+                                                                    ng-options="operation.id as operation.name for operation in operations"
+                                                                    ng-change="displayChart()"></select>
+                                                        </div>
+                                                    </div>
+                                                    <div style="align-content:center" class="form-group">
+                                                        <label class="col-xs-2 col-lg-1 control-label">{{getWord("From Point")}}</label>
+                                                        <div class="col-xs-4 col-lg-3">
+                                                            <input type="text" class="form-control" readonly name="from" ng-model="fromPoint" />
+                                                        </div>
+                                                        <label class="col-xs-2 col-lg-1 control-label">{{getWord("To Point")}}</label>
+                                                        <div class="col-xs-4 col-lg-3">
+                                                            <input type="text" class="form-control" readonly name="to" ng-model="toPoint" />
+                                                        </div>
+                                                        <div class="col-xs-2 col-lg-2" control-label>
+                                                            <button class="btn btn-primary" ng-disabled="!canDownload()" ng-click="downloadTimeSeries()" button-spinner="isLoading">{{getWord("Download")}}</button>
+                                                        </div>
+                                                    </div>
+                                                </fieldset>
+                                            </form>
+                                        </div>
+                                        <div jarvis-widget id="line-chart-widget" data-widget-editbutton="false">
+                                            <header>
+                                                <span class="widget-icon"> <i class="fa fa-bar-chart-o"></i> </span>
+
+                                                <h2><span id="hoverdata"></span></h2>
+                                            </header>
+                                            <div>
+                                                <div class="widget-body no-padding">
+                                                    <flot-line-chart data="lineChartData" data-timeseries="timeseries" data-set-selected-range="setRange"></flot-line-chart>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div ng-show="displayed.length === 0">
+                                        <div class="padding-10 text-center">
+                                            <span>{{getWord("No Chart")}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end s2 tab pane -->
+
+                                <div class="tab-pane fade" id="s3">
+                                    <div class="row padding-10">
+                                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                                            <div class="jarviswidget" id="StationsLayoutCtrl" data-widget-deletebutton="true">
+                                                <header>
+                                                    <h2>{{getWord("Directory")}}</h2>
+                                                </header>
+                                                <div id="directoryTree" class="widget-body">
+                                                    <!-- content goes here -->
+                                                    <div style="height:100%" data-angular-treeview="true"
+                                                         data-tree-id="directory"
+                                                         data-tree-model="directoryTree"
+                                                         data-node-id="name"
+                                                         data-node-label="title"
+                                                         data-node-children="children">
+                                                    </div>
+                                                    <!-- end content -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
+                                            <ebaas-file-manager dbschema="dbschema" dbclass="dbclass" oid="oid"></ebaas-file-manager>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end s2 tab pane -->
+                            </div>
+
+                            <!-- end content -->
+                        </div>
+                    </div>
+                </div>
+            </article>
+            <div class="padding-10">
+                <button class="btn btn-primary pull-right" ng-click="closeModal()">{{getWord("Cancel")}}</button>
+            </div>
+        </div>
+    </section>
+</div>

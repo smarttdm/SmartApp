@@ -1,0 +1,47 @@
+﻿
+
+<div id="content" ng-cloak>
+    <!-- widget grid -->
+    <section widget-grid id="widget-grid">
+        <div class="row">
+            <article class="col-sm-12 col-md-12 col-lg-12">
+                <div jarvis-widget id="wid-id-1" data-widget-editbutton="false" data-widget-custombutton="false">
+                    <header>
+                        <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+                        <h2>{{caption}}</h2>
+                        <div class="widget-toolbar" ng-show="parentStateName">
+                            <a class="btn btn-primary" ng-click="goBack();">
+                                <i class="glyphicon glyphicon-arrow-left">
+                                </i> {{getWord('Back')}}
+                            </a>
+                        </div>
+                    </header>
+                    <div>
+                        <!-- widget content -->
+                        <div>
+                            <div class="widget-body">
+                                <form name="ebaasform" novalidate ng-submit="onSubmit()">
+                                    <div data-ng-hide="message == ''" ng-class="getFormCssClasses(ebaasform)">
+                                        {{message}}
+                                    </div>
+                                    <ebaas-form-template dbschema="dbschema" dbclass="dbclass" oid="oid" template="template" formattribute="formAttribute" readonly="readonly"></ebaas-form-template>
+                                    <div data-ng-hide="message == ''" ng-class="getFormCssClasses(ebaasform)">
+                                        {{message}}
+                                    </div>
+                                    <div class="form-actions">
+                                        <button ng-show="allowSubmit()" type="submit" class="btn btn-primary" button-spinner="loading" ng-disabled="!canSave() || loading">
+                                            {{getWord('Submit')}}
+                                        </button>
+                                        <button type="button" class="btn btn-default" ng-show="parentStateName" ng-click="goBack()">
+                                            {{getWord('Back')}}
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+               </div>
+            </article>
+        </div>
+    </section>
+</div>

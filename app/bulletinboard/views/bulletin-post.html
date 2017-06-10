@@ -1,0 +1,112 @@
+﻿<div id="content" data-sparkline-container data-easy-pie-chart-container>
+ 
+    <!-- row -->
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="well padding-10">
+                <h5 class="margin-top-0"><i class="fa fa-search"></i> {{getWord("Bulletin Image")}}</h5>
+                <img ng-src="{{post.Image}}" class="img-responsive" alt="styles/custom">
+                <div class="padding-10"></div>
+                <ul class="list-inline font-xs">
+                    <li>
+                        <a ng-click="setShowImages(true)" ng-class="showImages === true? 'text-muted' : 'text-primary'">{{getWord("Show Images")}}</a>
+                    </li>
+                    <li>
+                        <a ng-click="setShowImages(false)" ng-class="showImages === true? 'text-primary': 'text-muted'">{{getWord("Hide Images")}}</a>
+                    </li>
+                </ul>
+                <div ng-show="showImages" id="myCarousel-1" class="carousel slide" data-smart-ride-carousel>
+                    <ol class="carousel-indicators">
+                        <li ng-repeat="img in images" data-target="#myCarousel-2" data-slide-to="{{$index}}" ng-class="$index === 0? 'active' : null"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <!-- Slide -->
+                        <div ng-repeat="img in images" ng-class="$index === 0? 'item active' : 'item'">
+                            <img ng-src="styles/custom/bulletin/{{img.name}}" alt="">
+                            <div class="carousel-caption caption-right">
+                                <a href-void class="btn btn-info btn-sm" ng-click="selectImage('styles/custom/bulletin/' + img.name)">{{getWord("Select Image")}}</a>
+                                <br />
+                                <br />
+                                <br />
+                            </div>
+                        </div>
+                    </div>
+                    <a class="left carousel-control" href="#myCarousel-1" ng-non-bindable data-slide="prev"> <span class="glyphicon glyphicon-chevron-left"></span> </a>
+                    <a class="right carousel-control" href="#myCarousel-1" ng-non-bindable data-slide="next"> <span class="glyphicon glyphicon-chevron-right"></span> </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-9">
+            <div class="well">
+                <form name="postForm" ng-submit="Save()">
+                    <table class="table table-striped table-forum">
+                        <thead>
+                            <tr>
+                                <th colspan="2">
+                                    <a ui-sref="app.bulletinboard"> {{getWord("Bulletin Board")}} </a> &gt; {{getWord("Edit")}}
+                                </th>
+                            </tr>
+                        </thead>
+                        <!-- Post -->
+                        <tbody>
+                            <tr>
+                                <td class="text-center">
+                                    {{getWord("Title")}}
+                                </td>
+                                <td>
+                                    <div class="col-sm-12">
+                                        <input type="text" class="form-control" ng-required="true" ng-model="post.Caption">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-center">
+                                    {{getWord("Publish Date")}}
+                                </td>
+                                <td>
+                                    <div class="col-sm-12">
+                                        <input type="text" class="form-control datepicker" data-smart-datepicker data-dateformat="dd/mm/yyyy" ng-model="post.CreateDate">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-center">
+                                    {{getWord("Is Pulic")}}
+                                </td>
+                                <td>
+                                    <div class="col-sm-12">
+                                        <select class="form-control" name="isPublic" ng-model="post.IsPublic">
+                                            <option value="1">{{getWord("True")}}</option>
+                                            <option value="2">{{getWord("False")}}</option>
+                                        </select>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-center" style="width: 8%;">
+                                    <div class="push-bit">
+                                        {{getWord("Content")}}
+                                    </div>
+                                </td>
+                                <td>
+                                    <summernote id="newPost" config="options" ng-model="post.Content"></summernote>
+
+                                    <div data-ng-hide="message == ''" class="alert alert-success">
+                                        {{message}}
+                                    </div>
+                                    <div class="padding-5 pull-right">
+                                        <button class="btn btn-primary" type="submit">
+                                            {{getWord('Post')}}
+                                        </button>
+                                    </div> 
+                                </td>
+                            </tr>
+                            <!-- end Post -->
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- end row -->
+</div>

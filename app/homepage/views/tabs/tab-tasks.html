@@ -1,0 +1,20 @@
+﻿<ul class="notification-body" ng-controller="myTasksController">
+	<li ng-repeat="task in tasks">
+		<span ui-sref="app.tasks.form({schema: getDBSchema(), taskid: task.taskId})">
+			<div class="bar-holder no-padding">
+				<p class="margin-bottom-5"><i class="fa fa-warning text-warning"></i> <strong>{{getWord('TaskName')}}:</strong> <i>{{task.subject}}</i> <span class="pull-right semi-bold text-muted">85%</span></p>
+				<div class="progress progress-md progress-striped">
+					<div class="progress-bar bg-color-teal" style="width: 85%;"></div>
+				</div>
+				<em class="note no-margin">{{getWord('TaskCreatedTime')}}：{{task.createTime}}</em>
+			</div>
+		</span>
+	</li>
+    <li>
+        <span ui-sref="app.tasks.list">
+            <div class="bar-holder no-padding">
+                <p class="margin-bottom-5"><i class="fa fa-tasks text-warning"></i> <strong>{{getWord('ViewTaskList')}}</strong></p>
+            </div>
+        </span>
+    </li>
+</ul>

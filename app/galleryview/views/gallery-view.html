@@ -1,0 +1,33 @@
+<div id="content">
+    <div class="row">
+        <big-breadcrumbs items="[getWord('Home'), getTitle()]"
+                         class="col-xs-12 col-sm-12"></big-breadcrumbs>
+    </div>
+<!-- row -->
+    <div class="row" style="padding:10px">
+	    <!-- SuperBox -->
+        <superbox superbox-model="items"
+                    superbox-actions="actions">
+        </superbox>
+    </div>
+    <div class="text-center">
+        <ul class="pagination pagination-sm">
+            <li ng-class="pageIndex === 0 ? 'disabled' : null">
+                <a href-void ng-click="prev()"><i class="fa fa-chevron-left"></i></a>
+            </li>
+            <li ng-class="pageIndex === 0 ? 'active' : null">
+                <a href-void ng-click="reload(0)">1</a>
+            </li>
+            <li  ng-class="pageIndex === 1 ? 'active' : null">
+                <a href-void ng-click="reload(1)">2</a>
+            </li>
+            <li ng-class="pageIndex === 2 ? 'active' : null">
+                <a href-void ng-click="reload(2)">3</a>
+            </li>
+            <li ng-class="pageIndex === 2 ? 'disabled' : null">
+                <a href-void ng-click="next()"><i class="fa fa-chevron-right"></i></a>
+            </li>
+        </ul>
+    </div>
+	<!-- end row -->
+</div>

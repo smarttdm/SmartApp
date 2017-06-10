@@ -1,0 +1,105 @@
+<div id="content">
+<div class="row">
+    <big-breadcrumbs items="[getWord('Home'), getWord('Blog')]"
+                     class="col-xs-12 col-sm-12"></big-breadcrumbs>
+</div>
+<div class="row">
+    <div class="col-sm-3">
+        <div class="well padding-10">
+            <h5 class="margin-top-0"><i class="fa fa-search"></i> {{getWord("Search Blogs")}}</h5>
+            <form name="searchform" ng-submit="searchBlogs()">
+                <div class="input-group">
+                    <input type="text" class="form-control" ng-model="keywords">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button" ng-click="searchBlogs()">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </span>
+                </div>
+            </form>
+                <!-- /input-group -->
+        </div>
+        <!-- /well -->
+        <div class="well padding-10">
+            <h5 class="margin-top-0"><i class="fa fa-tag"></i> {{getWord("Blog Categories")}}</h5>
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="list-group no-margin">
+                        <li ng-class="group.obj_id === groupId? 'list-group-item list-group-item-info' : 'list-group-item'" ng-repeat="group in groups">
+                            <a ui-sref="app.blog({schema: dbschema, class: dbclass, groupId: group.obj_id})"> <span class="badge pull-right">{{group.blogQty}}</span> {{group.name}} </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- /well -->
+        <div class="well padding-10">
+            <h5 class="margin-top-0"><i class="fa fa-fire"></i> {{getWord("Popular Blogs")}}:</h5>
+            <ul class="no-padding list-unstyled">
+                <li class="padding-5" ng-repeat="blog in popularblogs">
+                    <a ui-sref="app.blog.view({schema: dbschema, blogclass: blogClass, oid: blog.obj_id})" class="margin-top-0">{{blog.name}}</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /well -->
+        <!-- /well -->
+        <div class="well padding-10">
+            <h5 class="margin-top-0"><a ui-sref="app.blog.post({schema: dbschema, blogclass: blogClass})"><i class="fa  fa-pencil"></i> {{getWord("Add Blog")}}</a></h5>
+        </div>
+        <!-- /well -->
+    </div>
+    <div class="col-sm-9">
+    <div class="well padding-10">
+        <div ng-if="!blogs.length" class="text-center">
+            <h3>{{getWord("No Blogs")}}</h3>
+        </div>
+        <div ng-repeat="blog in blogs">
+            <div class="row">
+                <div class="col-md-4">
+                    <img ng-src="{{blog.image}}" class="img-responsive" alt="styles/custom">
+                    <ul class="list-inline padding-10">
+                        <li>
+                            <i class="fa fa-calendar"></i>
+                            <a href-void>{{blog.postTime}}</a>
+                        </li>
+                        <li>
+                            <i class="fa fa-comments"></i>
+                            <a href-void>{{blog.commentQty}}</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-8 padding-left-0">
+                    <h3 class="margin-top-0"><a ui-sref="app.blog.view({schema: dbschema, blogclass: blogClass, oid: blog.obj_id})">{{blog.name}}</a><br><small class="font-xs"><i>{{getWord("Blog Author")}} <a href-void>{{blog.posterName}}</a></i></small></h3>
+                    <div style="padding-bottom:10px">{{blog.abstract}}</div>
+                   
+                    <a class="btn btn-primary" ui-sref="app.blog.view({schema: dbschema, blogclass: blogClass, oid: blog.obj_id})"> {{getWord("Read more")}} </a>
+                    <a class="btn btn-warning" ng-if="isOwner(blog.poster)" ui-sref="app.blog.post({schema: dbschema, blogclass: blogClass, oid: blog.obj_id})"> {{getWord("Edit")}} </a>
+                </div>
+            </div>
+            <hr>
+        </div>
+    </div>
+    <div class="text-center">
+        <ul class="pagination pagination-sm">
+            <li ng-class="pageIndex === 0 ? 'disabled' : null">
+                <a href-void ng-click="prev()"><i class="fa fa-chevron-left"></i></a>
+            </li>
+            <li ng-class="pageIndex === 0 ? 'active' : null">
+                <a href-void ng-click="reload(0)">1</a>
+            </li>
+            <li ng-class="pageIndex === 1 ? 'active' : null">
+                <a href-void ng-click="reload(1)">2</a>
+            </li>
+            <li ng-class="pageIndex === 2 ? 'active' : null">
+                <a href-void ng-click="reload(2)">3</a>
+            </li>
+            <li ng-class="pageIndex === 2 ? 'disabled' : null">
+                <a href-void ng-click="next()"><i class="fa fa-chevron-right"></i></a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+</div>
+</div>
+	

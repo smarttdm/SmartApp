@@ -1,0 +1,71 @@
+﻿<!-- MAIN CONTENT -->
+<div id="content">
+    <!-- widget grid -->
+    <section widget-grid id="widget-grid">
+        <div class="row">
+            <article class="col-sm-12">
+                <div jarvis-widget id="normal-table-widget" data-widget-color="blueDark" data-widget-editbutton="false" data-widget-deletebutton="false">
+                    <header>
+                        <span class="widget-icon"> <i class="fa fa-table"></i> </span>
+                        <h2>{{getWord('Data Cart')}}</h2>
+                        <div class="widget-toolbar">
+                            <span class="jarviswidget-ctrls" ng-click="$dismiss()"> <i class="fa fa-close"></i> </span>
+                        </div>
+                    </header>
+                    <div>
+                        <table st-table="rowCollection" class="table table-striped table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th ng-repeat="column in columns">{{column.title}}</th>
+                                    <th>{{getWord("Delete")}}</th>
+                                </tr>
+                            </thead>
+                            <tbody ng-show="rowCollection.length > 0">
+                                <tr ng-repeat="row in rowCollection">
+                                    <td ng-repeat="column in columns">{{row[column.name]}}</td>
+                                    <td><button class="btn btn-danger" ng-click="deleteItem(row.obj_id)"><i class="fa fa-close"></i></button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="text-center padding-10" ng-show="rowCollection.length === 0">
+                            <span><strong>{{getWord("Empty Cart")}}</strong></span>
+                        </div>
+                    </div>
+                    <div class="padding-10">
+                        <footer>
+                            <div>
+                                <div class="form-group" ng-show="templates.length > 0">
+                                    <div class="col-sm-5">
+                                        <select class="form-control" name="country" ng-model="selectedTemplate">
+                                            <option value="0" selected="" disabled="">{{getWord("Select a template")}}</option>
+                                            <option value="{{template.id}}" ng-repeat="template in templates">{{template.name}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <button ng-disabled="isEmpty || selectedTemplate === '0' || loading" type="button" class="btn btn-success btn-sm" ng-click="compareItems()" button-spinner="loading">
+                                            {{getWord('Compare')}}
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="btn-group pull-right">
+                                    <button ng-disabled="isEmpty" type="button" class="btn btn-danger" ng-click="clearCartItems()">
+                                        {{getWord('Clear')}}
+                                    </button>
+                                    <button type="button" class="btn btn-default" ng-click="closeModal()">
+                                        {{getWord('Cancel')}}
+                                    </button>
+                                </div>
+                                <div class="btn-group pull-right">
+                                    <div class="col-sm-3">
+                                        <button ng-disabled="isEmpty || loading" type="button" class="btn btn-success btn-sm" ng-click="downloadDataPackage()" button-spinner="loading">
+                                            {{getWord('DownloadDataPackage')}}
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </footer>
+                    </div>
+            </article>
+        </div>
+    </section>
+</div>

@@ -1,0 +1,76 @@
+﻿
+
+<div id="content">
+    <style>
+        .datepicker {
+            z-index: 1151 !important;
+        }
+    </style>
+    <!-- widget grid -->
+    <div class="row">
+        <article class="col-sm-12 col-md-12 col-lg-12">
+            <div jarvis-widget id="wid-id-1" data-widget-editbutton="false" data-widget-custombutton="false">
+                <header>
+                    <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+                    <h2>{{getWord('Set Task Substitution')}}</h2>
+                    <div class="widget-toolbar">
+                        <span class="jarviswidget-ctrls" ng-click="$dismiss()"> <i class="fa fa-close"></i> </span>
+                    </div>
+                </header>
+                <div>
+                    <div class="text-center">
+                        <span class="text-center" ng-show="rowCollection.length === 0"><strong>{{getWord("No task substitute rules found")}}</strong></span>
+                    </div>
+                    <form name="settingForm" novalidate>
+                        <table ng-show="rowCollection.length > 0" st-table="rowCollection" class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>{{getWord('RuleName')}}</th>
+                                    <th>{{getWord('RuleStatus')}}</th>
+                                    <!--
+                                    <th>{{getWord('StartDate')}}</th>
+                                    <th>{{getWord('EndDate')}}</th>
+                                        -->
+                                    <th>{{getWord('Substitutes')}}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="row in rowCollection">
+                                    <td>{{row.name}}</td>
+                                    <td>
+                                        <select class="form-control" data-ng-model="row.effectiveStatus" convert-to-number>
+                                            <option value=0>{{getWord('Disabled')}}</option>
+                                            <option value=1>{{getWord('EffectiveNow')}}</option>
+                                            <!--<option value=2>{{getWord('Duration')}}</option>-->
+                                        </select>
+                                    </td>
+                                    <!--
+                                    <td>
+                                        <div class="col-sm-12">
+                                            <input type="text" class="form-control datepicker" data-smart-datepicker data-dateformat="dd/mm/yyyy" ng-model="row.startDate">
+                                         </div>
+                                    </td>
+                                    <td>
+                                        <div class="col-sm-12">
+                                            <input type="text" class="form-control datepicker" data-smart-datepicker data-dateformat="dd/mm/yyyy" ng-model="row.endDate">
+                                        </div>
+                                    </td>
+                                        -->
+                                    <td>{{row.substituteUsers.toString()}}</td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td class="text-center" colspan="3">
+                                        <button type="button" class="btn btn-primary" ng-click="update()">{{getWord('Submit')}}</button>
+                                        <button type="button" class="btn btn-default" ng-click="closeModal()">{{getWord('Cancel')}}</button>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </form>
+                </div>
+            </div>
+        </article>
+    </div>
+</div>

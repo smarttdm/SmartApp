@@ -1,0 +1,15 @@
+
+.bowerrc
+.idea
+bin
+jasmine
+node_modules
+build
+plugin
+sound
+obj
+smartadmin-plugin
+Service References
+Properties
+
+

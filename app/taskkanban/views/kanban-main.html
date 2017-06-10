@@ -1,0 +1,72 @@
+﻿<div id="content">
+    <div class="row">
+        <big-breadcrumbs items="[getWord('Home'), getWord('TaskTracker')]" class="col-xs-12 col-sm-12"></big-breadcrumbs>
+    </div>
+    <!--
+        The ID "widget-grid" will start to initialize all widgets below
+        You do not need to use widgets if you dont want to. Simply remove
+        the <section></section> and you can use wells or panels instead
+        -->
+    <!-- widget grid -->
+    <section id="widget-grid" data-widget-grid>
+        <!-- row -->
+        <div class="row">
+            <!-- NEW WIDGET START -->
+            <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <!-- Widget ID (each widget will need unique ID)-->
+                <div id="with-paging-widget" data-widget-colorbutton="false" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-fullscreenbutton="false" data-widget-deletebutton="false" data-widget-color="orange" data-jarvis-widget>
+                    <!-- widget options:
+                    usage: <div data-jarvis-widget id="wid-id-0" data-widget-editbutton="false">
+                    data-widget-colorbutton="false"
+                    data-widget-editbutton="false"
+                    data-widget-togglebutton="false"
+                    data-widget-deletebutton="false"
+                    data-widget-fullscreenbutton="false"
+                    data-widget-custombutton="false"
+                    data-widget-collapsed="true"
+                    data-widget-sortable="false"
+                -->
+                    <header>
+                        <h2><strong>{{kanbanText}}</strong></h2>
+                        <div class="widget-toolbar">
+                            <ul class="pagination pagination-xs">
+                                <li ng-class="pageIndex === 0 ? 'disabled' : null">
+                                    <a href-void ng-click="prev()">{{getWord('Prev')}}</a>
+                                </li>
+                                <li ng-class="pageIndex === 0 ? 'active' : null">
+                                    <a href-void ng-click="reload(0)">1</a>
+                                </li>
+                                <li ng-class="pageIndex === 1 ? 'active' : null">
+                                    <a href-void ng-click="reload(1)">2</a>
+                                </li>
+                                <li ng-class="pageIndex === 2 ? 'active' : null">
+                                    <a href-void ng-click="reload(2)">3</a>
+                                </li>
+                                <li ng-class="pageIndex === 2 ? 'disabled' : null">
+                                    <a href-void ng-click="next()">{{getWord('Next')}}</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </header>
+                    <!-- widget div-->
+                    <div>
+                        <!-- widget content -->
+                        <div class="widget-body no-padding">
+                            <div class="padding-10">
+                                <ds-kanban-board items="items" groups="groups" states="states" group-commands="groupCommands" item-commands="itemCommands"
+                                                    is-read-only="true" group-height="98" item-height="60"
+                                                    on-item-state-changed="onItemStateChanged(item, state)"><ds-kanban-board>
+                            </div>
+                        </div>
+                        <!-- end widget content -->
+                    </div>
+                    <!-- end widget div -->
+                    <!-- end widget -->
+                </div>
+            </article>
+            <!-- WIDGET END -->
+        </div>
+        <!-- end row -->
+    </section>
+    <!-- end widget grid -->
+</div>
